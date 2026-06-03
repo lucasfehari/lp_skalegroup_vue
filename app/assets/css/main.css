@@ -1,0 +1,1165 @@
+/*
+  =========================================
+  SKALE DIGITAL - SYSTEM DE DESIGN STYLES
+  =========================================
+  Este arquivo contém todo o CSS personalizado para a Landing Page da Skale Digital.
+  Paleta de Cores Estrita:
+  - Crimsoft: #e11638
+  - Lavender Blush: #fff1f3
+  - White: #ffffff
+  - Night: #0b0b0b
+*/
+
+/* -----------------------------------------
+   1. RESET & CONFIGURAÇÕES GLOBAIS
+   ----------------------------------------- */
+@font-face {
+  font-family: 'Helvetica Now Display';
+  src: local('Helvetica Now Display'), 
+       local('Helvetica-Now-Display'), 
+       local('HelveticaNowDisplay-Regular'), 
+       local('HelveticaNowDisplay-Bold');
+  font-display: swap;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Cores - Base */
+  --bg-color: #0b0b0b;              /* Night */
+  --bg-card: #0b0b0b;               /* Night */
+  --bg-card-solid: #0b0b0b;         /* Night */
+  --border-color: #fff1f3;          /* Lavender Blush */
+  --border-focus: #e11638;          /* Crimsoft */
+  
+  /* Cores - Marca */
+  --primary-red: #e11638;           /* Crimsoft */
+  --primary-hover: #ffffff;         /* White */
+  --primary-glow: #e11638;          /* Crimsoft */
+  --dark-red: #e11638;              /* Crimsoft */
+  --grey-text: #fff1f3;             /* Lavender Blush */
+  --light-grey: #fff1f3;            /* Lavender Blush */
+  --white: #ffffff;                 /* White */
+  
+  /* Fontes */
+  --font-title: 'Helvetica Now Display', 'Outfit', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  
+  /* Transições padrão */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--bg-color);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  background-color: var(--bg-color);
+}
+
+/* Fundo Dinâmico com Efeito de Glow (Usando apenas cores da paleta) */
+body::before {
+  content: "";
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--primary-red) 0%, var(--bg-color) 70%);
+  opacity: 0.15;
+  z-index: -1;
+  pointer-events: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* -----------------------------------------
+   2. TIPOGRAFIA & UTILITÁRIOS
+   ----------------------------------------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-title);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--white);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--white) 30%, var(--light-grey) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-red {
+  color: var(--primary-red);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-padding {
+  padding: 6rem 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 4rem 0;
+  }
+}
+
+/* -----------------------------------------
+   3. BOTÕES & MICRO-INTERAÇÕES
+   ----------------------------------------- */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary-red);
+  color: var(--white);
+  font-family: var(--font-title);
+  font-weight: 600;
+  padding: 1rem 2rem;
+  border-radius: 9999px;
+  border: 1px solid var(--primary-red);
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  background: var(--bg-color);
+  color: var(--primary-red);
+  border-color: var(--primary-red);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+/* Efeito Glassmorphism nos Cards - Usando apenas cores estritas, sem transparência externa */
+.glass-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  transition: var(--transition-smooth);
+}
+
+.glass-card:hover {
+  border-color: var(--primary-red);
+}
+
+/* -----------------------------------------
+   4. CABEÇALHO (HEADER & NAVBAR)
+   ----------------------------------------- */
+.site-header {
+  padding: 1.5rem 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo Skale */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+.logo-icon {
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+
+.logo-shape-1 {
+  position: absolute;
+  width: 16px;
+  height: 24px;
+  background-color: var(--primary-red);
+  transform: skewX(-15deg);
+  border-radius: 3px;
+  left: 2px;
+  top: 4px;
+}
+
+.logo-shape-2 {
+  position: absolute;
+  width: 12px;
+  height: 18px;
+  background-color: var(--white);
+  transform: skewX(-15deg);
+  border-radius: 2px;
+  right: 2px;
+  top: 8px;
+}
+
+.logo-text span {
+  font-size: 0.75rem;
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--grey-text);
+  margin-top: -4px;
+}
+
+/* Elementos do Menu no Header (Pill do mockup) */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-pill {
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  color: var(--light-grey);
+  font-weight: 500;
+  transition: var(--transition-fast);
+}
+
+.header-pill:hover {
+  border-color: var(--primary-red);
+  color: var(--primary-red);
+}
+
+.header-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--light-grey);
+  transition: var(--transition-fast);
+  cursor: pointer;
+}
+
+.header-circle:hover {
+  transform: scale(1.05);
+}
+
+/* -----------------------------------------
+   5. SEÇÃO 1: HERO & FORMULÁRIO
+   ----------------------------------------- */
+.hero-section {
+  padding-top: 10rem;
+  padding-bottom: 5rem;
+  position: relative;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.hero-tag {
+  display: inline-block;
+  font-family: var(--font-title);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--primary-red);
+  margin-bottom: 1rem;
+}
+
+.hero-title {
+  font-size: 3rem;
+  line-height: 1.15;
+  margin-bottom: 1.5rem;
+  letter-spacing: -1px;
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.25rem;
+  }
+}
+
+.hero-description {
+  font-size: 1.125rem;
+  color: var(--grey-text);
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+}
+
+/* Hero Right: Card de Monitoramento */
+.hero-visual {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.metric-visual-card {
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gráfico ilustrativo de Medição */
+.metric-chart {
+  height: 120px;
+  background: var(--bg-color);
+  border-radius: 8px;
+  border-bottom: 1px solid var(--border-color);
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
+}
+
+.chart-bar {
+  width: 25px;
+  background: var(--primary-red);
+  border-radius: 4px 4px 0 0;
+  animation: chartGrow 1.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  transition: var(--transition-fast);
+}
+
+.chart-bar:hover {
+  background: var(--white);
+}
+
+@keyframes chartGrow {
+  from { height: 0; }
+}
+
+.visual-quote {
+  font-size: 0.9375rem;
+  color: var(--grey-text);
+  line-height: 1.5;
+  border-left: 2px solid var(--primary-red);
+  padding-left: 1rem;
+}
+
+/* -----------------------------------------
+   FORMULÁRIO DE QUALIFICAÇÃO
+   ----------------------------------------- */
+.form-section-title {
+  text-align: center;
+  font-size: 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.form-card {
+  padding: 2.5rem;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group.full-width {
+  grid-column: span 2;
+}
+
+@media (max-width: 768px) {
+  .form-group.full-width {
+    grid-column: span 1;
+  }
+}
+
+.form-label {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--white);
+}
+
+.form-input {
+  width: 100%;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  padding: 1rem 1.25rem;
+  border-radius: 8px;
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  transition: var(--transition-fast);
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: var(--border-focus);
+}
+
+.form-input::placeholder {
+  color: var(--light-grey);
+}
+
+/* Radio buttons estilizados como Pills */
+.pill-selector {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+.pill-option {
+  position: relative;
+  cursor: pointer;
+}
+
+.pill-option input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.pill-label {
+  display: block;
+  text-align: center;
+  padding: 0.875rem;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--grey-text);
+  transition: var(--transition-fast);
+  user-select: none;
+}
+
+.pill-option input:checked + .pill-label {
+  background: var(--primary-red);
+  border-color: var(--primary-red);
+  color: var(--bg-color);
+  font-weight: 600;
+}
+
+.pill-option:hover .pill-label {
+  border-color: var(--primary-red);
+  color: var(--white);
+}
+
+/* Sim/Não Switcher */
+.qualify-switcher {
+  display: flex;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.switch-btn {
+  flex: 1;
+  padding: 0.875rem 0;
+  border-radius: 8px;
+  font-family: var(--font-title);
+  font-size: 1rem;
+  font-weight: 600;
+  border: 1px solid var(--border-color);
+  background: var(--bg-color);
+  color: var(--grey-text);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.switch-btn:hover {
+  border-color: var(--primary-red);
+  color: var(--white);
+}
+
+.switch-btn.active-sim {
+  background: var(--primary-red);
+  border-color: var(--primary-red);
+  color: var(--bg-color);
+}
+
+.switch-btn.active-nao {
+  background: var(--light-grey);
+  border-color: var(--light-grey);
+  color: var(--bg-color);
+}
+
+/* Rodapé do Form */
+.form-footer {
+  margin-top: 2.5rem;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .form-footer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    text-align: center;
+  }
+}
+
+.form-microcopy {
+  font-size: 0.875rem;
+  color: var(--grey-text);
+}
+
+.microcopy-line {
+  display: block;
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.microcopy-line::before {
+  content: "•";
+  color: var(--primary-red);
+  position: absolute;
+  left: 0;
+  font-size: 1.2rem;
+  line-height: 1;
+  top: -2px;
+}
+
+/* -----------------------------------------
+   6. SEÇÃO 2: PROVA SOCIAL (TICKER DE LOGOS)
+   ----------------------------------------- */
+.ticker-section {
+  background: var(--bg-color);
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 3rem 0;
+  overflow: hidden;
+}
+
+.ticker-title {
+  text-align: center;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: var(--grey-text);
+  margin-bottom: 2rem;
+}
+
+/* Marquee Infinito */
+.ticker-container {
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+  gap: 4rem;
+  padding-right: 4rem;
+}
+
+.ticker-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--grey-text);
+  white-space: nowrap;
+  transition: var(--transition-fast);
+}
+
+.ticker-item:hover {
+  color: var(--white);
+}
+
+.ticker-item svg {
+  fill: currentColor;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.ticker-subtext {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9375rem;
+  color: var(--grey-text);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* -----------------------------------------
+   7. SEÇÃO 3: A DOR (IDENTIFICAÇÃO)
+   ----------------------------------------- */
+.pain-section {
+  position: relative;
+}
+
+.pain-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+@media (max-width: 1024px) {
+  .pain-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+.pain-sticky {
+  position: sticky;
+  top: 6rem;
+}
+
+.pain-title {
+  font-size: 2.5rem;
+  line-height: 1.2;
+}
+
+.pain-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.pain-card {
+  padding: 1.75rem;
+  border-left: 3px solid var(--border-color);
+}
+
+.pain-card:hover {
+  border-left-color: var(--primary-red);
+  background: var(--bg-color);
+}
+
+.pain-card h3 {
+  font-size: 1.125rem;
+  margin-bottom: 0.5rem;
+}
+
+.pain-card p {
+  color: var(--grey-text);
+  font-size: 0.9375rem;
+}
+
+.pain-footer {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--bg-color);
+  border-radius: 12px;
+  border: 1px solid var(--primary-red);
+  text-align: center;
+}
+
+.pain-footer p {
+  font-size: 1.1rem;
+  font-weight: 500;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* -----------------------------------------
+   8. SEÇÃO 4 & 5: DIFERENCIAIS
+   ----------------------------------------- */
+.split-section {
+  border-top: 1px solid var(--border-color);
+}
+
+.split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+@media (max-width: 992px) {
+  .split-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .split-grid.reverse > :first-child {
+    order: 2;
+  }
+}
+
+.split-title {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.split-text {
+  font-size: 1.125rem;
+  color: var(--grey-text);
+  margin-bottom: 2rem;
+}
+
+.split-stats {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.stat-item h4 {
+  font-size: 2.25rem;
+  color: var(--primary-red);
+  margin-bottom: 0.25rem;
+}
+
+.stat-item p {
+  font-size: 0.875rem;
+  color: var(--grey-text);
+}
+
+/* Visual ilustrativo do dashboard */
+.split-visual {
+  position: relative;
+  padding: 1.5rem;
+}
+
+.dashboard-mockup {
+  padding: 2rem;
+  border-radius: 16px;
+  background: var(--bg-color);
+  border: 1px solid var(--border-color);
+}
+
+.mockup-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.mockup-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.mockup-dot:nth-child(1) { background: var(--primary-red); }
+.mockup-dot:nth-child(2) { background: var(--white); }
+.mockup-dot:nth-child(3) { background: var(--light-grey); }
+
+.mockup-title {
+  font-size: 0.875rem;
+  color: var(--grey-text);
+  margin-left: 0.5rem;
+}
+
+.mockup-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-color);
+  font-size: 0.875rem;
+}
+
+.mockup-row:last-child {
+  border-bottom: none;
+}
+
+.mockup-val {
+  font-weight: 600;
+  color: var(--white);
+}
+
+.mockup-val.positive {
+  color: var(--white);
+}
+
+/* -----------------------------------------
+   9. SEÇÃO 6: O QUE A GENTE ENTREGA (GRID)
+   ----------------------------------------- */
+.deliver-section {
+  background: var(--bg-color);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 4rem auto;
+}
+
+.section-header h2 {
+  font-size: 2.75rem;
+  margin-bottom: 1.25rem;
+}
+
+.section-header p {
+  font-size: 1.125rem;
+  color: var(--grey-text);
+}
+
+.deliver-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+@media (max-width: 992px) {
+  .deliver-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .deliver-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.deliver-card {
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.deliver-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--primary-red);
+}
+
+.deliver-icon {
+  width: 48px;
+  height: 48px;
+  background: var(--bg-color);
+  border: 1px solid var(--primary-red);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-red);
+  font-size: 1.5rem;
+}
+
+.deliver-card h3 {
+  font-size: 1.25rem;
+}
+
+.deliver-card p {
+  color: var(--grey-text);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+
+/* -----------------------------------------
+   10. SEÇÃO 7: DEPOIMENTOS / CASE CARDS
+   ----------------------------------------- */
+.cases-section {
+  position: relative;
+}
+
+.cases-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .cases-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.case-card {
+  display: flex;
+  background: var(--bg-card-solid);
+  border: 1px solid var(--border-color);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+}
+
+.case-card:hover {
+  border-color: var(--primary-red);
+  transform: scale(1.01);
+}
+
+.case-content {
+  flex: 1.1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.case-image {
+  flex: 0.9;
+  position: relative;
+  min-height: 220px;
+  background-size: cover;
+  background-position: center;
+}
+
+@media (max-width: 540px) {
+  .case-card {
+    flex-direction: column;
+  }
+  .case-image {
+    min-height: 180px;
+  }
+}
+
+.case-title {
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.case-description {
+  font-size: 0.875rem;
+  color: var(--grey-text);
+  margin-bottom: 1.5rem;
+}
+
+.case-stat {
+  margin-top: auto;
+}
+
+.case-stat-val {
+  font-family: var(--font-title);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--white);
+}
+
+.case-stat-lbl {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--primary-red);
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.case-arrow {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-end;
+  color: var(--grey-text);
+  transition: var(--transition-fast);
+}
+
+.case-card:hover .case-arrow {
+  background: var(--primary-red);
+  border-color: var(--primary-red);
+  color: var(--bg-color);
+  transform: translate(2px, -2px);
+}
+
+.cases-cta {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+/* -----------------------------------------
+   11. SEÇÃO 8: COMO FUNCIONA (PASSOS)
+   ----------------------------------------- */
+.steps-section {
+  background: var(--bg-color);
+  border-top: 1px solid var(--border-color);
+}
+
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+  position: relative;
+}
+
+@media (max-width: 992px) {
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+}
+
+/* Linha conectora entre passos */
+.steps-grid::before {
+  content: "";
+  position: absolute;
+  top: 35px;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: var(--primary-red);
+  z-index: 1;
+}
+
+@media (max-width: 992px) {
+  .steps-grid::before {
+    display: none;
+  }
+}
+
+.step-item {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 1rem;
+}
+
+.step-num {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--bg-color);
+  border: 2px solid var(--border-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem auto;
+  font-family: var(--font-title);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--grey-text);
+  transition: var(--transition-smooth);
+}
+
+.step-item:hover .step-num {
+  border-color: var(--primary-red);
+  color: var(--primary-red);
+}
+
+.step-item h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.step-item p {
+  color: var(--grey-text);
+  font-size: 0.9375rem;
+}
+
+/* -----------------------------------------
+   12. SEÇÃO 9: ESCASSEZ & CTA FINAL (RODAPÉ)
+   ----------------------------------------- */
+.cta-section {
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, 40%);
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--primary-red) 0%, var(--bg-color) 70%);
+  opacity: 0.15;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.cta-card {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 4rem 3rem;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .cta-card {
+    padding: 3rem 1.5rem;
+  }
+}
+
+.cta-card h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.cta-card p {
+  font-size: 1.125rem;
+  color: var(--grey-text);
+  margin-bottom: 2.5rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.site-footer {
+  text-align: center;
+  padding: 3rem 0;
+  border-top: 1px solid var(--border-color);
+  color: var(--grey-text);
+  font-size: 0.875rem;
+}
+
+.site-footer-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}

@@ -1,633 +1,2041 @@
 <template>
-  <div class="landing-page">
-    <!-- CABEÇALHO (HEADER) -->
-    <header class="site-header">
-      <div class="container header-container">
-        <a href="#" class="logo" aria-label="Skale Digital Home">
-          <div class="logo-icon" aria-hidden="true">
-            <div class="logo-shape-1"></div>
-            <div class="logo-shape-2"></div>
-          </div>
-          <div class="logo-text">
-            Skale
-            <span>Digital</span>
-          </div>
+  <div class="lp">
+
+    <!-- ============================================================
+         HEADER
+    ============================================================ -->
+    <header class="header" :class="{ 'header--hidden': !isHeaderVisible }">
+      <div class="container header__inner">
+        <a href="#" class="header__logo" aria-label="Skale Digital">
+          <img src="/logo_skale.svg" alt="Skale Digital" />
         </a>
-        <div class="header-actions">
-          <button class="header-pill" aria-label="Status das vagas">Vagas Abertas</button>
-          <div class="header-circle" aria-hidden="true" title="Perfil/Menu"></div>
-        </div>
+        <nav class="header__nav" aria-label="Menu principal">
+          <a href="#form-section" class="btn btn-icon">
+            <img src="/rivet-icons_arrow-up.svg" class="rivet-icons_arrow-up" srcset="">
+          </a>
+        </nav>
       </div>
     </header>
 
-    <!-- SEÇÃO 1: HERO (Copy + Visual lado a lado) -->
-    <section class="hero-section" id="hero">
-      <div class="container hero-grid">
-        <!-- Hero Left: Copy -->
-        <div class="hero-content">
-          <span class="hero-tag">Assessoria de marketing especializada em delivery</span>
-          <h1 class="hero-title text-gradient">
-            Pare de torcer pra ser um mês bom. Tenha um delivery que vende com previsibilidade, porque tudo é medido.
-          </h1>
-          <p class="hero-description">
-            No delivery, cada pedido deixa rastro. A Skale usa esse dado pra fazer seu delivery vender mais, com mais recorrência e sem depender de promoção no iFood.
-          </p>
-          <button @click="scrollToForm" class="btn-primary" aria-label="Ir para formulário de qualificação">
-            Quero escalar meu delivery
-          </button>
+    <!-- ============================================================
+         HERO
+    ============================================================ -->
+    <section class="hero section" id="hero" aria-labelledby="hero-title">
+      <div class="video-bg">
+        <video autoplay muted loop playsinline>
+          <source src="/videos/bgvideoskale.mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="container">
+
+        <div class="hero__eyebrow">
+          <span class="badge">Assessoria especializada em delivery</span>
         </div>
 
-        <!-- Hero Right: Medição Visual e Social Proof Rápido -->
-        <div class="hero-visual">
-          <div class="glass-card metric-visual-card">
-            <div class="mockup-header">
-              <div class="mockup-dot"></div>
-              <div class="mockup-dot"></div>
-              <div class="mockup-dot"></div>
-              <span class="mockup-title">skale_tracker_v3.bin</span>
+        <h1 id="hero-title" class="hero__title">
+          Pare de torcer<br>
+          pra ser um mês bom.
+        </h1>
+
+        <p class="hero__sub">
+          Tenha um delivery que vende com previsibilidade porque tudo é medido,
+          rastreado e otimizado semana a semana.
+        </p>
+
+        <div class="flow-container">
+          <div class="flow-wrapper">
+            <div class="flow-item">Gestão de Ifood</div>
+            <div class="flow-line"></div>
+            <div class="flow-item">Engenharia de cardápio</div>
+            <div class="flow-line"></div>
+            <div class="flow-logo">
+              <svg width="60" height="105" viewBox="0 0 60 105" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M37.9197 52.2366V32.8187H18.8101L37.9197 13.7091H57.3375V32.8187L37.9197 52.2366Z" fill="#E11638"/>
+                <path d="M18.6871 104.649L6.64697 104.455V92.4144L18.6871 80.3742H30.9215V92.4144L18.6871 104.649Z" fill="#E11638"/>
+                <path d="M38.8357 90.2828V71.4814H0V51.7553L18.8014 32.9539V51.7553H57.6371V71.4814L38.8357 90.2828Z" fill="#E11638"/>
+              </svg>
             </div>
-            <div class="metric-chart">
-              <div class="chart-bar" style="height: 35%;"></div>
-              <div class="chart-bar" style="height: 55%;"></div>
-              <div class="chart-bar" style="height: 48%;"></div>
-              <div class="chart-bar" style="height: 75%;"></div>
-              <div class="chart-bar" style="height: 95%;"></div>
-            </div>
-            <p class="visual-quote">
-              Você sabe quanto investiu, quanto voltou e de onde veio cada venda. Mais de 50 deliverys já escalados com a gente.
-            </p>
+            <div class="flow-line"></div>
+            <div class="flow-item">Captação audiovisual</div>
+            <div class="flow-line"></div>
+            <div class="flow-item">Gestão de tráfego</div>
           </div>
         </div>
+
       </div>
+
+      <!-- linha decorativa horizontal -->
+      <div class="hero__rule" aria-hidden="true"></div>
     </section>
 
-    <!-- FORMULÁRIO DE QUALIFICAÇÃO (Directly below Hero content) -->
-    <section class="section-padding" id="form-section">
+    <!-- ============================================================
+         TICKER — SOCIAL PROOF
+    ============================================================ -->
+    <div class="ticker" aria-label="Clientes Skale Digital">
+      <div class="ticker__track" aria-hidden="true">
+        <span class="ticker__item">Brabos Lanches</span>
+        <span class="ticker__dot">·</span>
+        <span class="ticker__item">Claude Restaurante</span>
+        <span class="ticker__dot">·</span>
+        <span class="ticker__item">BB Lanches</span>
+        <span class="ticker__dot">·</span>
+        <span class="ticker__item">João Restaurante</span>
+        <span class="ticker__dot">·</span>
+        <span class="ticker__item">Dona Pizza</span>
+        <span class="ticker__dot">·</span>
+        <span class="ticker__item">Bom Sabor</span>
+        <span class="ticker__dot">·</span>
+        <span class="ticker__item">Astro Burguer</span>
+        <span class="ticker__dot">·</span>
+        <!-- duplicado -->
+        <span class="ticker__item">Brabos Lanches</span>
+        <span class="ticker__dot">·</span>
+        <span class="ticker__item">Claude Restaurante</span>
+        <span class="ticker__dot">·</span>
+        <span class="ticker__item">BB Lanches</span>
+        <span class="ticker__dot">·</span>
+        <span class="ticker__item">João Restaurante</span>
+        <span class="ticker__dot">·</span>
+        <span class="ticker__item">Dona Pizza</span>
+        <span class="ticker__dot">·</span>
+        <span class="ticker__item">Bom Sabor</span>
+        <span class="ticker__dot">·</span>
+        <span class="ticker__item">Astro Burguer</span>
+        <span class="ticker__dot">·</span>
+      </div>
+    </div>
+
+    <!-- ============================================================
+         FORMULÁRIO
+    ============================================================ -->
+    <section class="section form-section" id="form-section" aria-labelledby="form-title">
       <div class="container">
-        <h2 class="form-section-title">Preencha nosso form:</h2>
-        
-        <div class="glass-card form-card">
-          <!-- State 1: Formulário Ativo -->
-          <form v-if="!submitted" @submit.prevent="submitForm" class="form-grid">
-            <!-- Nome -->
-            <div class="form-group">
-              <label for="name" class="form-label">Nome:</label>
-              <input 
-                type="text" 
-                id="name" 
-                v-model="form.name" 
-                required 
-                placeholder="Seu nome completo" 
-                class="form-input"
-              />
-            </div>
 
-            <!-- Faturamento Mensal (Dropdown / Radio Selector) -->
-            <div class="form-group">
-              <label class="form-label">Faturamento mensal:</label>
-              <div class="pill-selector">
-                <label class="pill-option">
-                  <input type="radio" v-model="form.revenue" value="Abaixo de 50k" required />
-                  <span class="pill-label">Abaixo de 50 mil</span>
-                </label>
-                <label class="pill-option">
-                  <input type="radio" v-model="form.revenue" value="50k a 100k" />
-                  <span class="pill-label">50 a 100 mil</span>
-                </label>
-                <label class="pill-option">
-                  <input type="radio" v-model="form.revenue" value="100k a 200k" />
-                  <span class="pill-label">100 a 200 mil</span>
-                </label>
-                <label class="pill-option">
-                  <input type="radio" v-model="form.revenue" value="Acima de 200k" />
-                  <span class="pill-label">Acima de 200 mil</span>
-                </label>
+        <div class="form-section__header">
+          <span class="eyebrow">Diagnóstico gratuito</span>
+          <h2 id="form-title" class="section-title">Veja se o seu delivery<br>está pronto pra escalar.</h2>
+          <p class="section-desc">Preencha abaixo. Sem enrolação — retorno em até 24h.</p>
+        </div>
+
+        <div class="form-wrap">
+          <form v-if="!submitted" @submit.prevent="submitForm" class="form" novalidate>
+
+            <!-- Linha 1: Nome + WhatsApp -->
+            <div class="form__row">
+              <div class="form__field">
+                <label for="name" class="form__label">Nome</label>
+                <input
+                  type="text"
+                  id="name"
+                  v-model="form.name"
+                  required
+                  placeholder="Seu nome completo"
+                  class="form__input"
+                  autocomplete="name"
+                />
               </div>
-            </div>
-
-            <!-- WhatsApp -->
-            <div class="form-group">
-              <label for="whatsapp" class="form-label">WhatsApp:</label>
-              <input 
-                type="tel" 
-                id="whatsapp" 
-                v-model="form.whatsapp" 
-                required 
-                placeholder="(00) 00000-0000" 
-                class="form-input"
-              />
-            </div>
-
-            <!-- Pergunta qualificatória -->
-            <div class="form-group">
-              <label class="form-label">Pergunta qualificatória:</label>
-              <p style="font-size: 0.85rem; color: var(--grey-text); line-height: 1.4;">
-                Você está disposto a investir mais de R$ 3.000 por mês (ou de 1% a 3% do seu faturamento bruto) no marketing do seu delivery?
-              </p>
-              <div class="qualify-switcher">
-                <button 
-                  type="button" 
-                  @click="form.willInvest = true" 
-                  :class="['switch-btn', { 'active-sim': form.willInvest === true }]"
-                >
-                  Sim
-                </button>
-                <button 
-                  type="button" 
-                  @click="form.willInvest = false" 
-                  :class="['switch-btn', { 'active-nao': form.willInvest === false }]"
-                >
-                  Não
-                </button>
+              <div class="form__field">
+                <label for="whatsapp" class="form__label">WhatsApp</label>
+                <input
+                  type="tel"
+                  id="whatsapp"
+                  v-model="form.whatsapp"
+                  required
+                  placeholder="(00) 00000-0000"
+                  class="form__input"
+                  autocomplete="tel"
+                />
               </div>
             </div>
 
             <!-- Nome do delivery -->
-            <div class="form-group">
-              <label for="delivery-name" class="form-label">Nome do delivery:</label>
-              <input 
-                type="text" 
-                id="delivery-name" 
-                v-model="form.deliveryName" 
-                required 
-                placeholder="Ex: Brabos Lanches" 
-                class="form-input"
+            <div class="form__field">
+              <label for="delivery-name" class="form__label">Nome do delivery</label>
+              <input
+                type="text"
+                id="delivery-name"
+                v-model="form.deliveryName"
+                required
+                placeholder="Ex: Brabos Lanches"
+                class="form__input"
               />
             </div>
 
-            <!-- Botão de Envio e Microcopy -->
-            <div class="form-group full-width form-footer">
-              <button type="submit" class="btn-primary">
-                Quero escalar meu delivery
-              </button>
-              <div class="form-microcopy">
-                <span class="microcopy-line">Vagas limitadas por mês.</span>
-                <span class="microcopy-line">Retorno em até 24h.</span>
+            <!-- Faturamento Mensal -->
+            <div class="form__field">
+              <span class="form__label">Faturamento mensal atual</span>
+              <div class="pills">
+                <label class="pill" v-for="opt in revenueOptions" :key="opt.value">
+                  <input type="radio" v-model="form.revenue" :value="opt.value" required />
+                  <span class="pill__label">{{ opt.label }}</span>
+                </label>
               </div>
             </div>
+
+            <!-- Investimento -->
+            <div class="form__field">
+              <span class="form__label">Você toparia investir acima de R$ 3.000/mês em marketing?</span>
+              <p class="form__hint">Ou de 1% a 3% do seu faturamento bruto</p>
+              <div class="toggle-group">
+                <button
+                  type="button"
+                  @click="form.willInvest = true"
+                  :class="['toggle-btn', { 'toggle-btn--active': form.willInvest === true }]"
+                  :aria-pressed="form.willInvest === true"
+                >
+                  Sim, topo
+                </button>
+                <button
+                  type="button"
+                  @click="form.willInvest = false"
+                  :class="['toggle-btn', { 'toggle-btn--no': form.willInvest === false }]"
+                  :aria-pressed="form.willInvest === false"
+                >
+                  Ainda não
+                </button>
+              </div>
+            </div>
+
+            <!-- Submit -->
+            <div class="form__footer">
+              <button type="submit" class="btn btn--primary btn--lg">
+                Quero escalar meu delivery
+                <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </button>
+              <div class="form__trust">
+                <span>Vagas limitadas por mês</span>
+                <span class="form__trust-dot" aria-hidden="true">·</span>
+                <span>Retorno em até 24h</span>
+                <span class="form__trust-dot" aria-hidden="true">·</span>
+                <span>Dados seguros</span>
+              </div>
+            </div>
+
           </form>
 
-          <!-- State 2: Sucesso do Envio -->
-          <div v-else style="text-align: center; padding: 2rem 0;" class="fade-in">
-            <div class="deliver-icon" style="margin: 0 auto 1.5rem auto; width: 64px; height: 64px; font-size: 2rem;">✓</div>
-            <h3 style="font-size: 1.75rem; margin-bottom: 0.5rem;" class="text-gradient">Recebemos seus dados!</h3>
-            <p style="color: var(--grey-text); max-width: 500px; margin: 0 auto 2rem auto;">
-              Obrigado, <strong style="color: var(--white);">{{ form.name }}</strong>. Analisamos o perfil do seu delivery <strong style="color: var(--white);">{{ form.deliveryName }}</strong>. Em até 24 horas um especialista entrará em contato via WhatsApp no número <strong style="color: var(--white);">{{ form.whatsapp }}</strong>.
+          <!-- Estado de sucesso -->
+          <div v-else class="form-success fade-in">
+            <div class="form-success__icon" aria-hidden="true">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                <path d="M6 16l7 7 13-13" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="form-success__title">Recebemos seus dados.</h3>
+            <p class="form-success__text">
+              Obrigado, <strong>{{ form.name }}</strong>. Analisamos o perfil do
+              <strong>{{ form.deliveryName }}</strong> e retornamos via WhatsApp
+              <strong>{{ form.whatsapp }}</strong> em até 24 horas.
             </p>
-            <button @click="resetForm" class="header-pill" style="cursor: pointer;">Preencher novamente</button>
+            <button @click="resetForm" class="btn btn--ghost btn--sm">
+              Preencher novamente
+            </button>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- SEÇÃO 2: PROVA SOCIAL (Faixa de logos) -->
-    <section class="ticker-section">
-      <h2 class="ticker-title">Mais de 50 deliverys já confiaram na Skale</h2>
-      
-      <!-- Ticker Marquee Rolante -->
-      <div class="ticker-container">
-        <div class="ticker-track">
-          <!-- Logo 1: Brabos -->
-          <div class="ticker-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 22h20L12 2zm0 3.8L18.5 19H5.5L12 5.8z"/></svg>
-            Brabos Lanches
-          </div>
-          <!-- Logo 2: Claude -->
-          <div class="ticker-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-            Claude Restaurante
-          </div>
-          <!-- Logo 3: BB Lanches -->
-          <div class="ticker-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-            BB Lanches
-          </div>
-          <!-- Logo 4: João Restaurante -->
-          <div class="ticker-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-            João Restaurante
-          </div>
-          <!-- Logo 5: Dona Pizza -->
-          <div class="ticker-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-            Dona Pizza
-          </div>
-
-          <!-- Ticker Duplicado para Scroll Infinito -->
-          <div class="ticker-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2L2 22h20L12 2zm0 3.8L18.5 19H5.5L12 5.8z"/></svg>
-            Brabos Lanches
-          </div>
-          <div class="ticker-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-            Claude Restaurante
-          </div>
-          <div class="ticker-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-            BB Lanches
-          </div>
-          <div class="ticker-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><polygon points="12,2 15,9 22,9 17,14 19,21 12,17 5,21 7,14 2,9 9,9" stroke="currentColor" stroke-width="2" fill="none"/></svg>
-            João Restaurante
-          </div>
-          <div class="ticker-item">
-            <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-            Dona Pizza
-          </div>
-        </div>
-      </div>
-
-      <p class="ticker-subtext">
-        De operações começando a deliverys faturando seis dígitos por mês. A gente já passou por isso.
-      </p>
-    </section>
-
-    <!-- SEÇÃO 3: A DOR (Identificação) -->
-    <section class="section-padding pain-section">
-      <div class="container pain-grid">
-        <div class="pain-sticky">
-          <span class="hero-tag">Sintomas comuns</span>
-          <h2 class="pain-title text-gradient">Se você toca um delivery, provavelmente já viveu isso:</h2>
-        </div>
-        
-        <div class="pain-cards">
-          <!-- Dor 1 -->
-          <div class="glass-card pain-card">
-            <h3>Instabilidade Previsível</h3>
-            <p>Um mês explode de pedido, no outro despenca, e você não sabe explicar o motivo.</p>
-          </div>
-          <!-- Dor 2 -->
-          <div class="glass-card pain-card">
-            <h3>Refém do iFood</h3>
-            <p>Cortou a promoção de entrega grátis ou cupom, o pedido sumiu. A sua margem foi embora.</p>
-          </div>
-          <!-- Dor 3 -->
-          <div class="glass-card pain-card">
-            <h3>Dinheiro jogado fora</h3>
-            <p>Joga orçamento no botão "impulsionar" do Instagram e não faz a mínima ideia de quanto de faturamento voltou.</p>
-          </div>
-          <!-- Dor 4 -->
-          <div class="glass-card pain-card">
-            <h3>Sem fidelidade de clientes</h3>
-            <p>Tem cliente que pede uma única vez no seu delivery por cupom e nunca mais volta a comprar.</p>
-          </div>
-          <!-- Dor 5 -->
-          <div class="glass-card pain-card">
-            <h3>Rodando no lugar</h3>
-            <p>Você vende muito, mas o caixa não sobra. A operação roda no mesmo lugar há meses sem crescer.</p>
-          </div>
-
-          <div class="pain-footer">
-            <p>
-              Nada disso é falta de produto bom. É falta de uma <strong>estrutura de marketing que use os seus dados</strong> pra vender todo mês, e não só quando dá sorte.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SEÇÃO 4: POR QUE DELIVERY (Diferencial de dados) -->
-    <section class="section-padding split-section">
-      <div class="container split-grid">
-        <div>
-          <span class="hero-tag">A diferença está no rastro</span>
-          <h2 class="split-title text-gradient">No delivery, a gente não chuta. A gente mede.</h2>
-          <p class="split-text">
-            Diferente de marketing solto por aí, no delivery cada pedido gera dado: quem comprou, quanto gastou, quando volta. É isso que deixa a gente fazer marketing que se paga e escala.
-          </p>
-          <p class="split-text">
-            A gente trabalha recorrência, monta CRM e acompanha cada real investido. Você não aposta. Você acompanha o resultado acontecendo.
-          </p>
-          <div class="split-stats">
-            <div class="stat-item">
-              <h4>100%</h4>
-              <p>Mapeado</p>
-            </div>
-            <div class="stat-item">
-              <h4>3.5x</h4>
-              <p>ROAS médio</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="split-visual">
-          <div class="dashboard-mockup">
-            <div class="mockup-header">
-              <div class="mockup-dot"></div>
-              <div class="mockup-dot"></div>
-              <div class="mockup-dot"></div>
-              <span class="mockup-title">dashboard_live.json</span>
-            </div>
-            <div class="mockup-row">
-              <span>Investimento de Marketing</span>
-              <span class="mockup-val">R$ 4.250,00</span>
-            </div>
-            <div class="mockup-row">
-              <span>Vendas Diretas</span>
-              <span class="mockup-val positive">R$ 18.910,00</span>
-            </div>
-            <div class="mockup-row">
-              <span>Pedidos Recorrentes</span>
-              <span class="mockup-val">42%</span>
-            </div>
-            <div class="mockup-row">
-              <span>Custo por Aquisição (CAC)</span>
-              <span class="mockup-val" style="color: #ef4444;">R$ 8,12</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SEÇÃO 5: QUEBRA DE OBJEÇÃO (Skale vs Agência) -->
-    <section class="section-padding split-section">
-      <div class="container split-grid reverse">
-        <div class="split-visual">
-          <div class="dashboard-mockup" style="border-color: rgba(244, 63, 94, 0.2);">
-            <div class="mockup-header">
-              <span class="mockup-title" style="color: var(--primary-red); font-weight: 600;">SQUAD DEDICADO SKALE</span>
-            </div>
-            <div class="mockup-row">
-              <span>Análise de CRM Diária</span>
-              <span class="mockup-val" style="color: #10b981;">✓ Sim</span>
-            </div>
-            <div class="mockup-row">
-              <span>Relatório de Margem e ROAS</span>
-              <span class="mockup-val" style="color: #10b981;">✓ Semanal</span>
-            </div>
-            <div class="mockup-row">
-              <span>Foco Exclusivo em Delivery</span>
-              <span class="mockup-val" style="color: #10b981;">✓ Sim</span>
-            </div>
-            <div class="mockup-row">
-              <span>Criativos baseados em Conversão</span>
-              <span class="mockup-val" style="color: #10b981;">✓ Sim</span>
-            </div>
-          </div>
-        </div>
-
-        <div>
-          <span class="hero-tag">Chega de amadorismo</span>
-          <h2 class="split-title text-gradient">Nada de agência que some depois do contrato.</h2>
-          <p class="split-text">
-            A gente não é freelancer que entrega post bonito e desaparece. A Skale é especializada só em delivery, com time dedicado e relatório de resultado toda semana.
-          </p>
-          <p class="split-text">
-            Investimento, pedidos, ticket médio, ROAS e recorrência, tudo na mesa. Você nunca fica no escuro sobre pra onde tá indo o seu dinheiro.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SEÇÃO 6: O QUE A GENTE ENTREGA (Resultado, não tarefa) -->
-    <section class="section-padding deliver-section">
+    <!-- ============================================================
+         DOR — IDENTIFICAÇÃO
+    ============================================================ -->
+    <section class="section pain-section" aria-labelledby="pain-title">
       <div class="container">
+
+        <div class="pain__header">
+          <span class="eyebrow">Sintomas comuns</span>
+          <h2 id="pain-title" class="section-title">Se você toca um delivery,<br>já viveu pelo menos um disso.</h2>
+        </div>
+
+        <div class="pain__grid">
+          <article class="pain-card">
+            <span class="pain-card__num">01</span>
+            <h3 class="pain-card__title">Instabilidade todo mês</h3>
+            <p class="pain-card__text">Um mês explode de pedido, no outro despenca — e você não consegue explicar o motivo.</p>
+          </article>
+          <article class="pain-card">
+            <span class="pain-card__num">02</span>
+            <h3 class="pain-card__title">Refém do iFood</h3>
+            <p class="pain-card__text">Cortou o cupom ou a entrega grátis, o pedido sumiu. Sua margem foi junto.</p>
+          </article>
+          <article class="pain-card">
+            <span class="pain-card__num">03</span>
+            <h3 class="pain-card__title">Verba sem retorno</h3>
+            <p class="pain-card__text">Joga dinheiro no "impulsionar" do Instagram e não sabe quanto de faturamento voltou.</p>
+          </article>
+          <article class="pain-card">
+            <span class="pain-card__num">04</span>
+            <h3 class="pain-card__title">Sem fidelidade</h3>
+            <p class="pain-card__text">Cliente pede uma vez, usado o cupom, e nunca mais aparece. Você pagou pra adquirir e perdeu.</p>
+          </article>
+          <article class="pain-card">
+            <span class="pain-card__num">05</span>
+            <h3 class="pain-card__title">Rodando no lugar</h3>
+            <p class="pain-card__text">Vende muito, o caixa não sobra. A operação está no mesmo patamar há meses.</p>
+          </article>
+          <div class="pain-card pain-card--callout">
+            <p>
+              Nada disso é falta de produto bom. É falta de uma
+              <strong>estrutura de marketing que usa seus dados</strong> — e não o achismo.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         DIFERENCIAL — A DIFERENÇA DA SKALE
+    ============================================================ -->
+    <section class="section split-section" aria-labelledby="split-title-1">
+      <div class="container split__inner">
+
+        <div class="split__copy">
+          <span class="eyebrow">A diferença está no dado</span>
+          <h2 id="split-title-1" class="section-title">No delivery,<br>a gente não chuta.<br>A gente mede.</h2>
+          <p class="split__text">
+            Diferente de marketing genérico, no delivery cada pedido deixa rastro: quem comprou, quanto gastou, quando volta. Nós usamos esse dado pra fazer marketing que se paga e escala.
+          </p>
+          <p class="split__text">
+            Trabalhamos recorrência, montamos CRM e acompanhamos cada real investido. Você não aposta. Você acompanha o resultado acontecendo.
+          </p>
+          <div class="split__metrics">
+            <div class="metric">
+              <strong class="metric__num">100%</strong>
+              <span class="metric__label">Mapeado</span>
+            </div>
+            <div class="metric">
+              <strong class="metric__num">3.5×</strong>
+              <span class="metric__label">ROAS médio</span>
+            </div>
+            <div class="metric">
+              <strong class="metric__num">+50</strong>
+              <span class="metric__label">Deliverys escalados</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="split__visual">
+          <div class="terminal">
+            <div class="terminal__bar">
+              <span class="terminal__dot"></span>
+              <span class="terminal__dot"></span>
+              <span class="terminal__dot"></span>
+              <span class="terminal__name">dashboard_live.json</span>
+            </div>
+            <ul class="terminal__rows">
+              <li class="terminal__row">
+                <span class="terminal__key">Investimento marketing</span>
+                <span class="terminal__val">R$ 4.250</span>
+              </li>
+              <li class="terminal__row">
+                <span class="terminal__key">Vendas diretas</span>
+                <span class="terminal__val terminal__val--up">R$ 18.910</span>
+              </li>
+              <li class="terminal__row">
+                <span class="terminal__key">Pedidos recorrentes</span>
+                <span class="terminal__val">42%</span>
+              </li>
+              <li class="terminal__row">
+                <span class="terminal__key">CAC</span>
+                <span class="terminal__val terminal__val--red">R$ 8,12</span>
+              </li>
+              <li class="terminal__row terminal__row--last">
+                <span class="terminal__key">ROAS</span>
+                <span class="terminal__val terminal__val--up">4.4×</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SKALE VS AGÊNCIA COMUM
+    ============================================================ -->
+    <section class="section split-section" aria-labelledby="split-title-2">
+      <div class="container split__inner split__inner--reverse">
+
+        <div class="split__visual">
+          <div class="terminal">
+            <div class="terminal__bar">
+              <span class="terminal__name terminal__name--red">SQUAD SKALE DEDICADO</span>
+            </div>
+            <ul class="terminal__rows">
+              <li class="terminal__row">
+                <span class="terminal__key">Análise de CRM</span>
+                <span class="terminal__val terminal__val--up">Diária</span>
+              </li>
+              <li class="terminal__row">
+                <span class="terminal__key">Relatório ROAS + Margem</span>
+                <span class="terminal__val terminal__val--up">Semanal</span>
+              </li>
+              <li class="terminal__row">
+                <span class="terminal__key">Foco exclusivo delivery</span>
+                <span class="terminal__val terminal__val--up">Sim</span>
+              </li>
+              <li class="terminal__row terminal__row--last">
+                <span class="terminal__key">Criativos por conversão</span>
+                <span class="terminal__val terminal__val--up">Sim</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="split__copy">
+          <span class="eyebrow">Chega de amadorismo</span>
+          <h2 id="split-title-2" class="section-title">Nada de agência que some depois do contrato.</h2>
+          <p class="split__text">
+            A gente não é freelancer que entrega post bonito e desaparece. A Skale é especializada só em delivery — com squad dedicado e relatório de resultado toda semana.
+          </p>
+          <p class="split__text">
+            Investimento, pedidos, ticket médio, ROAS e recorrência — tudo na mesa. Você nunca fica no escuro sobre pra onde tá indo o seu dinheiro.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ============================================================
+         O QUE ENTREGAMOS
+    ============================================================ -->
+    <section class="section deliver-section" aria-labelledby="deliver-title">
+      <div class="container">
+
         <div class="section-header">
-          <span class="hero-tag">Entregáveis de Alto Nível</span>
-          <h2>O que muda no seu delivery com a Skale</h2>
-          <p>Nosso foco está no crescimento da sua receita e do seu lucro líquido, não em curtidas.</p>
+          <span class="eyebrow">Entregáveis</span>
+          <h2 id="deliver-title" class="section-title">O que muda no seu delivery com a Skale.</h2>
+          <p class="section-desc">Foco no crescimento de receita e lucro líquido — não em curtidas.</p>
         </div>
 
         <div class="deliver-grid">
-          <!-- Item 1 -->
-          <div class="glass-card deliver-card">
-            <div class="deliver-icon" aria-hidden="true">📈</div>
-            <h3>Vendas previsíveis</h3>
-            <p>Estratégia de marketing digital orientada por dados de pedidos e conversão, mitigando a dependência do acaso.</p>
-          </div>
-          <!-- Item 2 -->
-          <div class="glass-card deliver-card">
-            <div class="deliver-icon" aria-hidden="true">📱</div>
-            <h3>Menos dependência de iFood</h3>
-            <p>Criação e escalada de canais próprios (site, app, WhatsApp) que vendem sem taxas absurdas comendo sua margem.</p>
-          </div>
-          <!-- Item 3 -->
-          <div class="glass-card deliver-card">
-            <div class="deliver-icon" aria-hidden="true">🔄</div>
-            <h3>Mais recorrência</h3>
-            <p>Campanhas inteligentes integradas ao seu CRM para fazer o mesmo cliente comprar novamente em menos tempo.</p>
-          </div>
-          <!-- Item 4 -->
-          <div class="glass-card deliver-card">
-            <div class="deliver-icon" aria-hidden="true">🚀</div>
-            <h3>Tráfego pago especializado</h3>
-            <p>Anúncios em Meta e Google focados no público de delivery e de geolocalização exata, geridos por especialistas.</p>
-          </div>
-          <!-- Item 5 -->
-          <div class="glass-card deliver-card">
-            <div class="deliver-icon" aria-hidden="true">📊</div>
-            <h3>Relatório claro toda semana</h3>
-            <p>Você acompanha de forma descomplicada exatamente quanto investiu em anúncios e quanto obteve em faturamento real.</p>
-          </div>
-          <!-- Item 6 -->
-          <div class="glass-card deliver-card">
-            <div class="deliver-icon" aria-hidden="true">🎯</div>
-            <h3>Crescimento que escala</h3>
-            <p>Otimização contínua: quanto mais dados nós medimos e acumulamos, mais assertiva se torna a alocação de verba.</p>
-          </div>
+          <article class="deliver-card">
+            <div class="deliver-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M2 14l4-4 3 3 5-7 4 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="deliver-card__title">Vendas previsíveis</h3>
+            <p class="deliver-card__text">Estratégia baseada em dados de pedidos e conversão. Sem depender do acaso ou do iFood.</p>
+          </article>
+
+          <article class="deliver-card">
+            <div class="deliver-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/>
+                <path d="M10 6v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="deliver-card__title">Menos dependência de iFood</h3>
+            <p class="deliver-card__text">Canais próprios — site, app e WhatsApp — que vendem sem taxas abusivas comendo sua margem.</p>
+          </article>
+
+          <article class="deliver-card">
+            <div class="deliver-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10a6 6 0 1 1 6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <path d="M10 10l-4 4M6 10l4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3 class="deliver-card__title">Mais recorrência</h3>
+            <p class="deliver-card__text">Campanhas integradas ao CRM para fazer o mesmo cliente comprar novamente — em menos tempo.</p>
+          </article>
+
+          <article class="deliver-card">
+            <div class="deliver-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 2l2 5h5l-4 3 1.5 5L10 12l-4.5 3L7 10 3 7h5L10 2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3 class="deliver-card__title">Tráfego pago especializado</h3>
+            <p class="deliver-card__text">Anúncios em Meta e Google focados em delivery e geolocalização — geridos por especialistas no nicho.</p>
+          </article>
+
+          <article class="deliver-card">
+            <div class="deliver-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <rect x="2" y="12" width="3" height="6" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="8.5" y="8" width="3" height="10" rx="1" stroke="currentColor" stroke-width="1.5"/>
+                <rect x="15" y="4" width="3" height="14" rx="1" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3 class="deliver-card__title">Relatório claro toda semana</h3>
+            <p class="deliver-card__text">Você sabe exatamente quanto investiu e quanto voltou em faturamento real. Sem enrolação.</p>
+          </article>
+
+          <article class="deliver-card">
+            <div class="deliver-card__icon" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 2v16M2 10h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                <circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3 class="deliver-card__title">Crescimento que escala</h3>
+            <p class="deliver-card__text">Quanto mais dados acumulamos, mais assertiva a alocação de verba. O sistema fica mais inteligente.</p>
+          </article>
         </div>
+
       </div>
     </section>
 
-    <!-- SEÇÃO 7: DEPOIMENTOS / CASE GRID -->
-    <section class="section-padding cases-section">
+    <!-- ============================================================
+         CASES
+    ============================================================ -->
+    <section class="section cases-section" aria-labelledby="cases-title">
       <div class="container">
+
         <div class="section-header">
-          <span class="hero-tag">Cases de sucesso</span>
-          <h2>Quem já escalou com a gente fala melhor que qualquer promessa</h2>
+          <span class="eyebrow">Cases de resultado</span>
+          <h2 id="cases-title" class="section-title">Quem já escalou com a gente<br>fala melhor que qualquer promessa.</h2>
         </div>
 
         <div class="cases-grid">
-          <!-- Case 1: Brabos Lanches -->
-          <div class="case-card">
-            <div class="case-content">
-              <div>
-                <h3 class="case-title">Brabos Lanches</h3>
-                <p class="case-description">Depois de contratarem o Skale Group, a operação atingiu um patamar estável de vendas mensais.</p>
+          <article class="case-card">
+            <div class="case-card__content">
+              <div class="case-card__top">
+                <h3 class="case-card__name">Brabos Lanches</h3>
+                <p class="case-card__desc">Depois de estruturar o CRM e campanhas geolocalizadas, atingiram vendas mensais estáveis acima de seis dígitos.</p>
               </div>
-              <div class="case-stat">
-                <div class="case-stat-val">+ R$ 200k</div>
-                <div class="case-stat-lbl">Faturamento Mensal</div>
+              <div class="case-card__bottom">
+                <strong class="case-card__num">R$ 200k+</strong>
+                <span class="case-card__period">faturamento mensal</span>
               </div>
-              <div class="case-arrow" aria-hidden="true">↗</div>
             </div>
-            <div class="case-image" style="background-image: url('/images/case-brabos.png')" role="img" aria-label="Brabos Lanches fachada do restaurante"></div>
-          </div>
+            <div class="case-card__image" style="background-image: url('/images/case-brabos.png')" role="img" aria-label="Brabos Lanches"></div>
+          </article>
 
-          <!-- Case 2: Claude Restaurante -->
-          <div class="case-card">
-            <div class="case-content">
-              <div>
-                <h3 class="case-title">Claude Restaurante</h3>
-                <p class="case-description">Margem de lucro otimizada e forte canal de vendas direto via WhatsApp.</p>
+          <article class="case-card">
+            <div class="case-card__content">
+              <div class="case-card__top">
+                <h3 class="case-card__name">Claude Restaurante</h3>
+                <p class="case-card__desc">Margem otimizada, canal próprio de WhatsApp escalado com CRM e ROAS acima de 4x.</p>
               </div>
-              <div class="case-stat">
-                <div class="case-stat-val">+ R$ 250k</div>
-                <div class="case-stat-lbl">Faturamento Mensal</div>
+              <div class="case-card__bottom">
+                <strong class="case-card__num">R$ 250k+</strong>
+                <span class="case-card__period">faturamento mensal</span>
               </div>
-              <div class="case-arrow" aria-hidden="true">↗</div>
             </div>
-            <div class="case-image" style="background-image: url('/images/case-claude.png')" role="img" aria-label="Claude Restaurante cozinha em funcionamento"></div>
-          </div>
+            <div class="case-card__image" style="background-image: url('/images/case-claude.png')" role="img" aria-label="Claude Restaurante"></div>
+          </article>
 
-          <!-- Case 3: BB Lanches -->
-          <div class="case-card">
-            <div class="case-content">
-              <div>
-                <h3 class="case-title">BB Lanches</h3>
-                <p class="case-description">Escala de pedidos com redução de 30% na taxa média de marketing do iFood.</p>
+          <article class="case-card">
+            <div class="case-card__content">
+              <div class="case-card__top">
+                <h3 class="case-card__name">João Restaurante</h3>
+                <p class="case-card__desc">Campanha de geolocalização e ativação de base inativa gerou crescimento recorde no ticket médio.</p>
               </div>
-              <div class="case-stat">
-                <div class="case-stat-val">+ R$ 220k</div>
-                <div class="case-stat-lbl">Faturamento Mensal</div>
+              <div class="case-card__bottom">
+                <strong class="case-card__num">R$ 310k+</strong>
+                <span class="case-card__period">faturamento mensal</span>
               </div>
-              <div class="case-arrow" aria-hidden="true">↗</div>
             </div>
-            <div class="case-image" style="background-image: url('/images/case-bb.png')" role="img" aria-label="BB Lanches balcão de lanches rápido"></div>
-          </div>
+            <div class="case-card__image" style="background-image: url('/images/case-joao.png')" role="img" aria-label="João Restaurante"></div>
+          </article>
 
-          <!-- Case 4: João Restaurante -->
-          <div class="case-card">
-            <div class="case-content">
-              <div>
-                <h3 class="case-title">João Restaurante</h3>
-                <p class="case-description">Campanha de geolocalização e CRM com retorno recorde sobre o investimento.</p>
+          <article class="case-card">
+            <div class="case-card__content">
+              <div class="case-card__top">
+                <h3 class="case-card__name">BB Lanches</h3>
+                <p class="case-card__desc">Redução de 30% na dependência do iFood e escala de pedidos via canais próprios em 4 meses.</p>
               </div>
-              <div class="case-stat">
-                <div class="case-stat-val">+ R$ 310k</div>
-                <div class="case-stat-lbl">Faturamento Mensal</div>
+              <div class="case-card__bottom">
+                <strong class="case-card__num">R$ 220k+</strong>
+                <span class="case-card__period">faturamento mensal</span>
               </div>
-              <div class="case-arrow" aria-hidden="true">↗</div>
             </div>
-            <div class="case-image" style="background-image: url('/images/case-joao.png')" role="img" aria-label="João Restaurante área de refeições no jardim"></div>
-          </div>
+            <div class="case-card__image" style="background-image: url('/images/case-bb.png')" role="img" aria-label="BB Lanches"></div>
+          </article>
         </div>
 
-        <div class="cases-cta">
-          <button @click="scrollToForm" class="btn-primary" aria-label="Ir para formulário de qualificação">
+        <div class="cases__cta">
+          <a href="#form-section" class="btn btn--primary" @click.prevent="scrollToForm">
             Quero ser o próximo resultado
-          </button>
+          </a>
         </div>
+
       </div>
     </section>
 
-    <!-- SEÇÃO 8: COMO FUNCIONA (PASSOS) -->
-    <section class="section-padding steps-section">
+    <!-- ============================================================
+         COMO FUNCIONA
+    ============================================================ -->
+    <section class="section steps-section" aria-labelledby="steps-title">
       <div class="container">
+
         <div class="section-header">
-          <span class="hero-tag">Fluxo descomplicado</span>
-          <h2>Simples de começar</h2>
-          <p>Três etapas simples para começar a rodar a sua máquina de vendas com dados</p>
+          <span class="eyebrow">Processo</span>
+          <h2 id="steps-title" class="section-title">Simples de começar.</h2>
+          <p class="section-desc">Três etapas para rodar sua máquina de vendas com dados.</p>
         </div>
 
-        <div class="steps-grid">
-          <!-- Passo 1 -->
-          <div class="step-item">
-            <div class="step-num">01</div>
-            <h3>Preencha o formulário</h3>
-            <p>Conte um pouco sobre o momento atual do seu delivery. Leva menos de 1 minuto e os dados estão seguros.</p>
+        <div class="steps">
+          <div class="step">
+            <span class="step__num">01</span>
+            <div class="step__line" aria-hidden="true"></div>
+            <h3 class="step__title">Preencha o formulário</h3>
+            <p class="step__text">Conte sobre o seu delivery. Leva menos de 1 minuto.</p>
           </div>
-          <!-- Passo 2 -->
-          <div class="step-item">
-            <div class="step-num">02</div>
-            <h3>Fale com especialista</h3>
-            <p>Em até 24 horas úteis, um especialista em escala de delivery te chamará para entender se a assessoria cabe na sua operação.</p>
+          <div class="step">
+            <span class="step__num">02</span>
+            <div class="step__line" aria-hidden="true"></div>
+            <h3 class="step__title">Fale com especialista</h3>
+            <p class="step__text">Em até 24h um especialista em delivery te chama para diagnóstico.</p>
           </div>
-          <!-- Passo 3 -->
-          <div class="step-item">
-            <div class="step-num">03</div>
-            <h3>Venda com previsibilidade</h3>
-            <p>Estruturamos as suas tags, CRM e campanhas de anúncios. Nós executamos e medimos, você gerencia a cozinha.</p>
+          <div class="step">
+            <span class="step__num">03</span>
+            <h3 class="step__title">Venda com previsibilidade</h3>
+            <p class="step__text">Estruturamos CRM, campanhas e relatórios. Você gerencia a cozinha.</p>
           </div>
         </div>
+
       </div>
     </section>
 
-    <!-- SEÇÃO 9: ESCASSEZ + CTA FINAL -->
-    <section class="section-padding cta-section">
+    <!-- ============================================================
+         CTA FINAL
+    ============================================================ -->
+    <section class="section cta-section" aria-labelledby="cta-title">
       <div class="container">
-        <div class="glass-card cta-card">
-          <span class="hero-tag">Acesso restrito</span>
-          <h2>A gente não pega delivery demais ao mesmo tempo.</h2>
-          <p>
-            Para entregar resultado de verdade e acompanhar o dado de perto, trabalhamos com um número limitado de deliverys por mês. Se o seu já fatura acima de 50 mil e tá pronto pra escalar com previsibilidade, garanta seu lugar agora.
+        <div class="cta-block">
+          <span class="eyebrow">Vagas limitadas</span>
+          <h2 id="cta-title" class="cta-block__title">A gente não pega delivery demais ao mesmo tempo.</h2>
+          <p class="cta-block__text">
+            Para entregar resultado de verdade, trabalhamos com um número limitado de deliverys por mês.
+            Se o seu já fatura acima de 50 mil e está pronto pra escalar — garanta sua vaga agora.
           </p>
-          <button @click="scrollToForm" class="btn-primary" aria-label="Garantir vaga no formulário">
-            Quero uma das vagas deste mês
-          </button>
+          <a href="#form-section" class="btn btn--primary btn--lg" @click.prevent="scrollToForm">
+            Garantir minha vaga deste mês
+            <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- FOOTER -->
-    <footer class="site-footer">
-      <div class="container">
-        <div class="site-footer-logo">
-          <div class="logo-icon" aria-hidden="true" style="width: 24px; height: 24px;">
-            <div class="logo-shape-1" style="width: 12px; height: 18px; left: 1px; top: 3px;"></div>
-            <div class="logo-shape-2" style="width: 9px; height: 14px; right: 1px; top: 6px;"></div>
-          </div>
-          <span style="font-family: var(--font-title); font-weight: 800; font-size: 1.25rem;">Skale</span>
-        </div>
-        <p>&copy; 2026 Skale Digital assessoria de marketing Ltda. Todos os direitos reservados.</p>
-        <p style="font-size: 0.75rem; margin-top: 0.5rem; opacity: 0.5;">
-          Desenvolvido com carinho profissional para alta performance de conversão de leads.
-        </p>
+    <!-- ============================================================
+         FOOTER
+    ============================================================ -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <a href="#" class="footer__logo" aria-label="Skale Digital">
+          <img src="/logo_skale.svg" alt="Skale Digital" />
+        </a>
+        <p class="footer__copy">&copy; 2026 Skale Digital assessoria de marketing Ltda. Todos os direitos reservados.</p>
       </div>
     </footer>
+
   </div>
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 
-// Estado reativo do formulário
+const isHeaderVisible = ref(true)
+let lastScrollY = 0
+
+const handleScroll = () => {
+  const currentScrollY = window.scrollY
+  // Hide header when scrolling down and past 80px, show when scrolling up
+  if (currentScrollY > lastScrollY && currentScrollY > 80) {
+    isHeaderVisible.value = false
+  } else {
+    isHeaderVisible.value = true
+  }
+  lastScrollY = currentScrollY
+}
+
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+})
+
+const revenueOptions = [
+  { value: 'Abaixo de 50k', label: 'Abaixo de R$ 50k' },
+  { value: '50k a 100k',   label: 'R$ 50k – 100k' },
+  { value: '100k a 200k',  label: 'R$ 100k – 200k' },
+  { value: 'Acima de 200k', label: 'Acima de R$ 200k' },
+]
+
 const form = ref({
-  name: '',
-  revenue: '50k a 100k', // Valor padrão selecionado
-  whatsapp: '',
-  willInvest: true, // Valor padrão Sim
-  deliveryName: ''
+  name:         '',
+  revenue:      '50k a 100k',
+  whatsapp:     '',
+  willInvest:   true,
+  deliveryName: '',
 })
 
 const submitted = ref(false)
 
-// Manipulador do envio do formulário
 const submitForm = () => {
-  // Simular processamento/envio de lead para a Skale
-  console.log('Dados do lead enviados:', form.value)
+  console.log('Lead enviado:', form.value)
   submitted.value = true
 }
 
-// Reset do formulário
 const resetForm = () => {
-  form.value = {
-    name: '',
-    revenue: '50k a 100k',
-    whatsapp: '',
-    willInvest: true,
-    deliveryName: ''
-  }
+  form.value = { name: '', revenue: '50k a 100k', whatsapp: '', willInvest: true, deliveryName: '' }
   submitted.value = false
 }
 
-// Função utilitária para rolar suavemente até o formulário
 const scrollToForm = () => {
   const el = document.getElementById('form-section')
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth' })
-  }
+  if (el) el.scrollIntoView({ behavior: 'smooth' })
 }
 </script>
 
-<style scoped>
-/* Transição rápida de fade-in para a mensagem de sucesso */
-.fade-in {
-  animation: fadeIn 0.4s ease forwards;
+<style>
+/* =================================================================
+   RESET & BASE
+================================================================= */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background: var(--bg);
+  color: var(--white);
+  font-family: var(--font-body);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  background: var(--bg);
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; height: auto; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; }
+
+/* =================================================================
+   TIPOGRAFIA
+================================================================= */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--white);
+}
+</style>
+
+<style scoped>
+
+/* =================================================================
+   LAYOUT UTILITÁRIOS
+================================================================= */
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.section {
+  padding: var(--section-gap) 0;
+}
+
+.section-header {
+  max-width: 640px;
+  margin-bottom: 4rem;
+}
+
+.section-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-top: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.section-desc {
+  font-size: 1.0625rem;
+  color: var(--grey);
+  line-height: 1.65;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--red);
+}
+
+/* =================================================================
+   BOTÕES
+================================================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  padding: 0.875rem 1.75rem;
+  border-radius: 999px;
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: all var(--ease-fast);
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.btn--primary {
+  background: var(--red);
+  color: var(--white);
+  border-color: var(--red);
+}
+.btn-icon{
+  border-color: var(--red);
+}
+
+.btn-icon:hover{
+  background-color: var(--grey);
+  transition: ease-out;
+}
+
+.btn--primary:hover {
+  background: transparent;
+  color: var(--red);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--grey);
+  border-color: var(--border);
+}
+
+.btn--ghost:hover {
+  border-color: var(--white);
+  color: var(--white);
+}
+
+.btn--lg {
+  font-size: 1rem;
+  padding: 1rem 2.25rem;
+}
+
+.btn--sm {
+  font-size: 0.875rem;
+  padding: 0.625rem 1.25rem;
+}
+
+.btn__arrow {
+  transition: transform var(--ease-fast);
+  flex-shrink: 0;
+}
+
+.btn:hover .btn__arrow {
+  transform: translateX(4px);
+}
+
+/* =================================================================
+   HEADER
+================================================================= */
+.header {
+  position: fixed;
+  top: 1.25rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2.5rem);
+  max-width: var(--container);
+  z-index: 100;
+  background: rgba(37, 37, 37, 0.45);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 100px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5), 
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transition: all var(--ease-smooth);
+}
+
+.header--hidden {
+  transform: translate(-50%, calc(-100% - 2.5rem));
+  opacity: 0;
+  pointer-events: none;
+}
+
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 64px;
+}
+
+.header__logo img {
+  height: 48px;
+  width: auto;
+}
+
+.header__cta {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--white);
+  padding: 0.5rem 1.25rem;
+  border: 1.5px solid var(--border);
+  border-radius: 6px;
+  transition: all var(--ease-fast);
+}
+
+.header__cta:hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+/* =================================================================
+   HERO
+================================================================= */
+.hero {
+  padding-top: calc(var(--section-gap) + 64px);
+  padding-bottom: 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.video-bg video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  opacity: 0.90; /* Subdued background video */
+}
+
+/* Elegant dark gradient overlay to ensure text legibility and smooth blending */
+.video-bg::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    rgba(11, 11, 11, 0.3) 0%,
+    rgba(11, 11, 11, 0.7) 60%,
+    var(--bg) 100%
+  );
+  z-index: 1;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+}
+
+.hero__eyebrow {
+  margin-bottom: 0.4rem;
+}
+.badge{
+  text-transform: uppercase;
+}
+
+.hero__title {
+  font-size: clamp(3rem, 7vw, 6rem);
+  line-height: 0.97;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+  margin-bottom: 1.75rem;
+  background: linear-gradient(145deg, var(--white) 10%, var(--grey-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero__sub {
+  font-size: clamp(1rem, 1.5vw, 1.1875rem);
+  color: var(--grey);
+  max-width: 560px;
+  line-height: 1.65;
+  margin-bottom: 2.5rem;
+}
+
+.hero__actions {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 5rem;
+}
+
+.hero__hint {
+  font-size: 0.8125rem;
+  color: var(--grey-dark);
+  letter-spacing: 0.02em;
+}
+
+.hero__stats {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid var(--border);
+}
+
+.hero__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.hero__stat-num {
+  font-family: var(--font-display);
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.hero__stat-label {
+  font-size: 0.8125rem;
+  color: var(--grey-dark);
+  letter-spacing: 0.02em;
+}
+
+.hero__stat-divider {
+  width: 1px;
+  height: 40px;
+  background: var(--border);
+}
+
+.hero__rule {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--border);
+}
+
+/* =================================================================
+   PILARES DE ATUAÇÃO (FLOW)
+================================================================= */
+.flow-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+}
+
+.flow-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.flow-item {
+  padding: 1rem 2rem;
+  border-radius: 100px;
+  background: rgba(22, 22, 22, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3),
+              inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  transition: all var(--ease-smooth);
+  cursor: default;
+}
+
+.flow-item:hover {
+  border-color: var(--red);
+  background: rgba(225, 22, 56, 0.06);
+  box-shadow: 0 8px 30px rgba(225, 22, 56, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.flow-line {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  height: 1px;
+  border-top: 1px dashed rgba(255, 255, 255, 0.25);
+  min-width: 30px;
+  margin: 0 10px;
+}
+
+.flow-logo {
+  flex-shrink: 0;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px) saturate(120%);
+  -webkit-backdrop-filter: blur(24px) saturate(120%);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 8px 32px 0 rgba(0, 0, 0, 0.35),
+    inset 0 4px 12px rgba(255, 255, 255, 0.15),
+    inset 0 -4px 12px rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--ease-bounce), border-color var(--ease-smooth), box-shadow var(--ease-smooth);
+  cursor: pointer;
+}
+
+.flow-logo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+
+
+.flow-logo:hover {
+  transform: scale(1.06) translateY(-2px);
+  box-shadow: 
+    0 12px 40px 0 rgba(225, 22, 56, 0.25),
+    inset 0 4px 12px rgba(255, 255, 255, 0.25),
+    inset 0 -4px 12px rgba(0, 0, 0, 0.4);
+  border-color: rgba(225, 22, 56, 0.4);
+}
+
+.flow-logo svg {
+  width: 44px;
+  height: auto;
+  position: relative;
+  z-index: 1;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+  transition: transform var(--ease-smooth);
+}
+
+.flow-logo:hover svg {
+  transform: scale(1.05);
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .flow-wrapper {
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+  
+  .flow-line {
+    width: 0;
+    min-width: 0;
+    height: 25px;
+    border-top: none;
+    border-left: 1px dashed rgba(255, 255, 255, 0.25);
+    flex-grow: 0;
+    margin: 0 auto;
+    align-self: center;
+  }
+  
+  .flow-logo {
+    padding: 0.75rem 0;
+  }
+}
+
+/* =================================================================
+   TICKER
+================================================================= */
+.ticker {
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 1rem 0;
+  background: var(--bg-card);
+}
+
+.ticker__track {
+  display: flex;
+  width: max-content;
+  animation: ticker-scroll 30s linear infinite;
+  gap: 2rem;
+  align-items: center;
+}
+
+.ticker__item {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--grey-dark);
+  white-space: nowrap;
+  transition: color var(--ease-fast);
+}
+
+.ticker__item:hover {
+  color: var(--white);
+}
+
+.ticker__dot {
+  color: var(--red);
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+@keyframes ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* =================================================================
+   FORMULÁRIO
+================================================================= */
+.form-section {
+  border-bottom: 1px solid var(--border);
+}
+
+.form-section__header {
+  max-width: 580px;
+  margin-bottom: 3.5rem;
+}
+
+.form-section__header .section-title {
+  margin-top: 0.75rem;
+  margin-bottom: 0.75rem;
+}
+
+.form-wrap {
+  max-width: 700px;
+  background: rgba(22, 22, 22, 0.25);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 32px;
+  padding: 3rem 2.5rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4),
+              inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.form__row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+}
+
+.form__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--grey);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-left: 1.25rem;
+}
+
+.form__hint {
+  font-size: 0.8125rem;
+  color: var(--grey-dark);
+  margin-top: -0.25rem;
+  margin-left: 1.25rem;
+}
+
+.form__input {
+  width: 100%;
+  background: rgba(11, 11, 11, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 100px;
+  padding: 1rem 1.75rem;
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.9375rem;
+  transition: all var(--ease-smooth);
+  outline: none;
+}
+
+.form__input:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 15px rgba(225, 22, 56, 0.15),
+              inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  background: rgba(11, 11, 11, 0.8);
+}
+
+.form__input::placeholder {
+  color: var(--grey-dark);
+}
+
+/* Pills */
+.pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.pill {
+  cursor: pointer;
+}
+
+.pill input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.pill__label {
+  display: block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 100px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--grey);
+  background: rgba(11, 11, 11, 0.4);
+  transition: all var(--ease-smooth);
+  user-select: none;
+}
+
+.pill input:checked + .pill__label {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+  font-weight: 600;
+  box-shadow: 0 0 15px rgba(225, 22, 56, 0.25);
+}
+
+.pill:hover .pill__label {
+  border-color: var(--red);
+  color: var(--white);
+}
+
+/* Toggle Sim/Não */
+.toggle-group {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+  padding-left: 0.5rem;
+}
+
+.toggle-btn {
+  flex: 1;
+  max-width: 180px;
+  padding: 0.875rem 1.5rem;
+  border-radius: 100px;
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--grey);
+  background: rgba(11, 11, 11, 0.4);
+  cursor: pointer;
+  transition: all var(--ease-smooth);
+}
+
+.toggle-btn:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+}
+
+.toggle-btn--active {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+  box-shadow: 0 0 15px rgba(225, 22, 56, 0.25);
+}
+
+.toggle-btn--no {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--white);
+}
+
+/* Footer do form */
+.form__footer {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  padding-top: 0.5rem;
+}
+
+.form__trust {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+  color: var(--grey-dark);
+}
+
+.form__trust-dot {
+  color: var(--border);
+}
+
+/* Sucesso */
+.form-success {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 3rem 0;
+}
+
+.form-success__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1.5px solid var(--red);
+  color: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-success__title {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.form-success__text {
+  font-size: 1rem;
+  color: var(--grey);
+  line-height: 1.65;
+  max-width: 480px;
+}
+
+.form-success__text strong {
+  color: var(--white);
+}
+
+/* =================================================================
+   SEÇÃO DOR
+================================================================= */
+.pain__header {
+  max-width: 640px;
+  margin-bottom: 4rem;
+}
+
+.pain__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.pain-card {
+  background: var(--bg);
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  transition: background var(--ease-fast);
+}
+
+.pain-card:hover {
+  background: var(--bg-card);
+}
+
+.pain-card--callout {
+  background: var(--red);
+  grid-column: span 3;
+  padding: 1.75rem 2rem;
+}
+
+.pain-card--callout p {
+  font-size: 1.0625rem;
+  line-height: 1.5;
+  color: var(--off-white);
+  max-width: 700px;
+}
+
+.pain-card--callout strong {
+  color: var(--white);
+}
+
+.pain-card__num {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.1em;
+}
+
+.pain-card--callout .pain-card__num {
+  color: rgba(255,255,255,0.6);
+}
+
+.pain-card__title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.pain-card__text {
+  font-size: 0.9375rem;
+  color: var(--grey);
+  line-height: 1.6;
+}
+
+/* =================================================================
+   SPLIT SECTIONS
+================================================================= */
+.split-section {
+  border-top: 1px solid var(--border);
+}
+
+.split__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6rem;
+  align-items: center;
+}
+
+.split__inner--reverse {
+  direction: rtl;
+}
+
+.split__inner--reverse > * {
+  direction: ltr;
+}
+
+.split__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.split__copy .eyebrow {
+  margin-bottom: 0.25rem;
+}
+
+.split__copy .section-title {
+  margin: 0;
+}
+
+.split__text {
+  font-size: 1rem;
+  color: var(--grey);
+  line-height: 1.7;
+}
+
+.split__metrics {
+  display: flex;
+  gap: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  margin-top: 0.5rem;
+}
+
+.metric {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.metric__num {
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--red);
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.metric__label {
+  font-size: 0.8125rem;
+  color: var(--grey-dark);
+}
+
+/* Terminal / Mockup card */
+.terminal {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: 'SFMono-Regular', 'Consolas', 'Menlo', monospace;
+}
+
+.terminal__bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-surface);
+}
+
+.terminal__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+}
+
+.terminal__dot:nth-child(1) { background: #ff5f57; }
+.terminal__dot:nth-child(2) { background: #febc2e; }
+.terminal__dot:nth-child(3) { background: #28c840; }
+
+.terminal__name {
+  font-size: 0.75rem;
+  color: var(--grey-dark);
+  margin-left: 0.25rem;
+  font-family: var(--font-body);
+}
+
+.terminal__name--red {
+  color: var(--red);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.8125rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.terminal__rows {
+  list-style: none;
+  padding: 0.5rem 0;
+}
+
+.terminal__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.875rem 1.25rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.875rem;
+  font-family: var(--font-body);
+  transition: background var(--ease-fast);
+}
+
+.terminal__row:hover {
+  background: var(--bg-surface);
+}
+
+.terminal__row--last {
+  border-bottom: none;
+}
+
+.terminal__key {
+  color: var(--grey);
+}
+
+.terminal__val {
+  font-weight: 600;
+  color: var(--white);
+  font-family: 'SFMono-Regular', 'Consolas', monospace;
+}
+
+.terminal__val--up  { color: #22c55e; }
+.terminal__val--red { color: var(--red); }
+
+/* =================================================================
+   ENTREGÁVEIS
+================================================================= */
+.deliver-section {
+  border-top: 1px solid var(--border);
+}
+
+.deliver-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--border);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.deliver-card {
+  background: var(--bg);
+  padding: 2.25rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: background var(--ease-fast);
+}
+
+.deliver-card:hover {
+  background: var(--bg-card);
+}
+
+.deliver-card__icon {
+  width: 40px;
+  height: 40px;
+  color: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.deliver-card__title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.deliver-card__text {
+  font-size: 0.9375rem;
+  color: var(--grey);
+  line-height: 1.65;
+}
+/* =================================================================
+   ICONES
+================================================================= */
+.rivet-icons_arrow-up{
+  width: 12px;
+  height: auto;
+}
+
+/* =================================================================
+   CASES
+================================================================= */
+.cases-section {
+  border-top: 1px solid var(--border);
+}
+
+.cases-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25rem;
+  margin-bottom: 3.5rem;
+}
+
+.case-card {
+  display: flex;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-card);
+  transition: border-color var(--ease-fast), transform var(--ease-smooth);
+}
+
+.case-card:hover {
+  border-color: var(--border-red);
+  transform: translateY(-3px);
+}
+
+.case-card__content {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.case-card__top {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.case-card__name {
+  font-size: 1.125rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.case-card__desc {
+  font-size: 0.875rem;
+  color: var(--grey);
+  line-height: 1.6;
+}
+
+.case-card__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.case-card__num {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.04em;
+}
+
+.case-card__period {
+  font-size: 0.75rem;
+  color: var(--red);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+}
+
+.case-card__image {
+  width: 180px;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+  background-color: var(--bg-surface);
+}
+
+.cases__cta {
+  text-align: center;
+}
+
+/* =================================================================
+   COMO FUNCIONA
+================================================================= */
+.steps-section {
+  border-top: 1px solid var(--border);
+}
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  position: relative;
+}
+
+.steps::before {
+  content: '';
+  position: absolute;
+  top: 1.5rem;
+  left: 5%;
+  right: 5%;
+  height: 1px;
+  background: var(--border);
+}
+
+.step {
+  padding: 0 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.step__num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--red);
+  letter-spacing: 0.05em;
+  margin-bottom: 1.75rem;
+}
+
+.step__line {
+  display: none;
+}
+
+.step__title {
+  font-size: 1.0625rem;
+  font-weight: 700;
+  margin-bottom: 0.625rem;
+  color: var(--white);
+}
+
+.step__text {
+  font-size: 0.9375rem;
+  color: var(--grey);
+  line-height: 1.6;
+}
+
+/* =================================================================
+   CTA FINAL
+================================================================= */
+.cta-section {
+  border-top: 1px solid var(--border);
+}
+
+.cta-block {
+  max-width: 680px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.cta-block__title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  line-height: 1.1;
+}
+
+.cta-block__text {
+  font-size: 1.0625rem;
+  color: var(--grey);
+  line-height: 1.65;
+  max-width: 560px;
+}
+
+/* =================================================================
+   FOOTER
+================================================================= */
+.footer {
+  border-top: 1px solid var(--border);
+  padding: 2.5rem 0;
+}
+
+.footer__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer__logo img {
+  height: 22px;
+  width: auto;
+  opacity: 0.7;
+  transition: opacity var(--ease-fast);
+}
+
+.footer__logo:hover img {
+  opacity: 1;
+}
+
+.footer__copy {
+  font-size: 0.8125rem;
+  color: var(--grey-dark);
+}
+
+/* =================================================================
+   ANIMAÇÕES
+================================================================= */
+.fade-in {
+  animation: fadeUp 0.45s var(--ease-smooth) both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =================================================================
+   RESPONSIVO
+================================================================= */
+@media (max-width: 1024px) {
+  .split__inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .split__inner--reverse {
+    direction: ltr;
+  }
+
+  .pain__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pain-card--callout {
+    grid-column: span 2;
+  }
+
+  .deliver-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --section-gap: 4.5rem;
+  }
+
+  .hero__stats {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .hero__stat-divider {
+    display: none;
+  }
+
+  .form__row {
+    grid-template-columns: 1fr;
+  }
+
+  .form-wrap {
+    padding: 2.25rem 1.5rem;
+    border-radius: 24px;
+  }
+
+  .pain__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pain-card--callout {
+    grid-column: span 1;
+  }
+
+  .deliver-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cases-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .case-card__image {
+    display: none;
+  }
+
+  .steps {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .steps::before {
+    display: none;
+  }
+
+  .step {
+    padding: 0;
+  }
+
+  .form__footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
 }
 </style>

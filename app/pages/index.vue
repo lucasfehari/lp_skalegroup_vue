@@ -26,42 +26,168 @@
           <source src="/videos/bgvideoskale.mp4" type="video/mp4">
         </video>
       </div>
-      <div class="container">
+      <div class="container hero__inner">
+        <div class="hero__copy">
+          <div class="hero__eyebrow">
+            <span class="badge">Assessoria especializada em delivery</span>
+          </div>
 
-        <div class="hero__eyebrow">
-          <span class="badge">Assessoria especializada em delivery</span>
+          <h1 id="hero-title" class="hero__title">
+            Pare de torcer<br>
+            pra ser um mês bom.
+          </h1>
+
+          <p class="hero__sub">
+            Tenha um delivery que vende com previsibilidade porque tudo é medido,
+            rastreado e otimizado semana a semana.
+          </p>
         </div>
 
-        <h1 id="hero-title" class="hero__title">
-          Pare de torcer<br>
-          pra ser um mês bom.
-        </h1>
+        <div class="hero__form" id="form-section">
+          <div class="form-wrap">
+            <form v-if="!submitted" @submit.prevent="submitForm" class="form" novalidate>
 
-        <p class="hero__sub">
-          Tenha um delivery que vende com previsibilidade porque tudo é medido,
-          rastreado e otimizado semana a semana.
-        </p>
+              <!-- Linha 1: Nome + WhatsApp -->
+              <div class="form__row">
+                <div class="form__field">
+                  <label for="name" class="form__label">Nome</label>
+                  <input
+                    type="text"
+                    id="name"
+                    v-model="form.name"
+                    required
+                    placeholder="Seu nome completo"
+                    class="form__input"
+                    autocomplete="name"
+                  />
+                </div>
 
-        <div class="flow-container">
-          <div class="flow-wrapper">
-            <div class="flow-item">Gestão de Ifood</div>
-            <div class="flow-line"></div>
-            <div class="flow-item">Engenharia de cardápio</div>
-            <div class="flow-line"></div>
-            <div class="flow-logo">
-              <svg width="60" height="105" viewBox="0 0 60 105" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M37.9197 52.2366V32.8187H18.8101L37.9197 13.7091H57.3375V32.8187L37.9197 52.2366Z" fill="#E11638"/>
-                <path d="M18.6871 104.649L6.64697 104.455V92.4144L18.6871 80.3742H30.9215V92.4144L18.6871 104.649Z" fill="#E11638"/>
-                <path d="M38.8357 90.2828V71.4814H0V51.7553L18.8014 32.9539V51.7553H57.6371V71.4814L38.8357 90.2828Z" fill="#E11638"/>
-              </svg>
+                <div class="form__field">
+                  <label for="email" class="form__label">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    v-model="form.email"
+                    required
+                    placeholder="example@email.com"
+                    class="form__input"
+                    autocomplete="email"
+                  />
+                </div>
+                <div class="form__field">
+                  <label for="whatsapp" class="form__label">WhatsApp</label>
+                  <input
+                    type="tel"
+                    id="whatsapp"
+                    v-model="form.whatsapp"
+                    required
+                    placeholder="(00) 00000-0000"
+                    class="form__input"
+                    autocomplete="tel"
+                  />
+                </div>
+              </div>
+
+              <!-- Nome do delivery -->
+              <div class="form__field">
+                <label for="delivery-name" class="form__label">Nome do delivery</label>
+                <input
+                  type="text"
+                  id="delivery-name"
+                  v-model="form.deliveryName"
+                  required
+                  placeholder="Ex: Brabos Lanches"
+                  class="form__input"
+                />
+              </div>
+
+              <!-- Faturamento Mensal (Custom Dropdown) -->
+              <div class="form__field">
+                <span class="form__label">Faturamento mensal atual</span>
+                <div class="custom-dropdown" :class="{ 'custom-dropdown--open': isRevenueDropdownOpen }">
+                  <div class="custom-dropdown__trigger form__input" @click="toggleRevenueDropdown">
+                    <span class="custom-dropdown__selected" :style="{ color: form.revenue ? 'var(--white)' : 'var(--grey-dark)' }">
+                      {{ revenueOptions.find(opt => opt.value === form.revenue)?.label || 'Selecione...' }}
+                    </span>
+                    <svg class="custom-dropdown__icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </div>
+                  <ul class="custom-dropdown__menu" v-show="isRevenueDropdownOpen">
+                    <li
+                      v-for="opt in revenueOptions"
+                      :key="opt.value"
+                      @click="selectRevenue(opt.value)"
+                      :class="['custom-dropdown__item', { 'custom-dropdown__item--selected': form.revenue === opt.value }]"
+                    >
+                      {{ opt.label }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Investimento -->
+              <div class="form__field">
+                <span class="form__label">Você toparia investir acima de R$ 3.000/mês em marketing?</span>
+                <p class="form__hint">Ou de 1% a 3% do seu faturamento bruto</p>
+                <div class="toggle-group">
+                  <button
+                    type="button"
+                    @click="form.willInvest = true"
+                    :class="['toggle-btn', { 'toggle-btn--active': form.willInvest === true }]"
+                    :aria-pressed="form.willInvest === true"
+                  >
+                    Sim, topo
+                  </button>
+                  <button
+                    type="button"
+                    @click="form.willInvest = false"
+                    :class="['toggle-btn', { 'toggle-btn--no': form.willInvest === false }]"
+                    :aria-pressed="form.willInvest === false"
+                  >
+                    Ainda não
+                  </button>
+                </div>
+              </div>
+
+              <!-- Submit -->
+              <div class="form__footer">
+                <button type="submit" class="btn btn--primary btn--lg">
+                  Quero escalar meu delivery
+                  <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+                <div class="form__trust">
+                  <span>Vagas limitadas por mês</span>
+                  <span class="form__trust-dot" aria-hidden="true">·</span>
+                  <span>Retorno em até 24h</span>
+                  <span class="form__trust-dot" aria-hidden="true">·</span>
+                  <span>Dados seguros</span>
+                </div>
+              </div>
+
+            </form>
+
+            <!-- Estado de sucesso -->
+            <div v-else class="form-success fade-in">
+              <div class="form-success__icon" aria-hidden="true">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                  <path d="M6 16l7 7 13-13" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h3 class="form-success__title">Recebemos seus dados.</h3>
+              <p class="form-success__text">
+                Obrigado, <strong>{{ form.name }}</strong>. Analisamos o perfil do
+                <strong>{{ form.deliveryName }}</strong> e retornamos via WhatsApp
+                <strong>{{ form.whatsapp }}</strong> em até 24 horas.
+              </p>
+              <button @click="resetForm" class="btn btn--ghost btn--sm">
+                Preencher novamente
+              </button>
             </div>
-            <div class="flow-line"></div>
-            <div class="flow-item">Captação audiovisual</div>
-            <div class="flow-line"></div>
-            <div class="flow-item">Gestão de tráfego</div>
           </div>
         </div>
-
       </div>
 
       <!-- linha decorativa horizontal -->
@@ -71,6 +197,7 @@
     <!-- ============================================================
          TICKER — SOCIAL PROOF
     ============================================================ -->
+    <!--
     <div class="ticker" aria-label="Clientes Skale Digital">
       <div class="ticker__track" aria-hidden="true">
         <span class="ticker__item">Brabos Lanches</span>
@@ -87,7 +214,9 @@
         <span class="ticker__dot">·</span>
         <span class="ticker__item">Astro Burguer</span>
         <span class="ticker__dot">·</span>
+        -->
         <!-- duplicado -->
+         <!--
         <span class="ticker__item">Brabos Lanches</span>
         <span class="ticker__dot">·</span>
         <span class="ticker__item">Claude Restaurante</span>
@@ -104,138 +233,8 @@
         <span class="ticker__dot">·</span>
       </div>
     </div>
-
-    <!-- ============================================================
-         FORMULÁRIO
-    ============================================================ -->
-    <section class="section form-section" id="form-section" aria-labelledby="form-title">
-      <div class="container">
-
-        <div class="form-section__header">
-          <span class="eyebrow">Diagnóstico gratuito</span>
-          <h2 id="form-title" class="section-title">Veja se o seu delivery<br>está pronto pra escalar.</h2>
-          <p class="section-desc">Preencha abaixo. Sem enrolação — retorno em até 24h.</p>
-        </div>
-
-        <div class="form-wrap">
-          <form v-if="!submitted" @submit.prevent="submitForm" class="form" novalidate>
-
-            <!-- Linha 1: Nome + WhatsApp -->
-            <div class="form__row">
-              <div class="form__field">
-                <label for="name" class="form__label">Nome</label>
-                <input
-                  type="text"
-                  id="name"
-                  v-model="form.name"
-                  required
-                  placeholder="Seu nome completo"
-                  class="form__input"
-                  autocomplete="name"
-                />
-              </div>
-              <div class="form__field">
-                <label for="whatsapp" class="form__label">WhatsApp</label>
-                <input
-                  type="tel"
-                  id="whatsapp"
-                  v-model="form.whatsapp"
-                  required
-                  placeholder="(00) 00000-0000"
-                  class="form__input"
-                  autocomplete="tel"
-                />
-              </div>
-            </div>
-
-            <!-- Nome do delivery -->
-            <div class="form__field">
-              <label for="delivery-name" class="form__label">Nome do delivery</label>
-              <input
-                type="text"
-                id="delivery-name"
-                v-model="form.deliveryName"
-                required
-                placeholder="Ex: Brabos Lanches"
-                class="form__input"
-              />
-            </div>
-
-            <!-- Faturamento Mensal -->
-            <div class="form__field">
-              <span class="form__label">Faturamento mensal atual</span>
-              <div class="pills">
-                <label class="pill" v-for="opt in revenueOptions" :key="opt.value">
-                  <input type="radio" v-model="form.revenue" :value="opt.value" required />
-                  <span class="pill__label">{{ opt.label }}</span>
-                </label>
-              </div>
-            </div>
-
-            <!-- Investimento -->
-            <div class="form__field">
-              <span class="form__label">Você toparia investir acima de R$ 3.000/mês em marketing?</span>
-              <p class="form__hint">Ou de 1% a 3% do seu faturamento bruto</p>
-              <div class="toggle-group">
-                <button
-                  type="button"
-                  @click="form.willInvest = true"
-                  :class="['toggle-btn', { 'toggle-btn--active': form.willInvest === true }]"
-                  :aria-pressed="form.willInvest === true"
-                >
-                  Sim, topo
-                </button>
-                <button
-                  type="button"
-                  @click="form.willInvest = false"
-                  :class="['toggle-btn', { 'toggle-btn--no': form.willInvest === false }]"
-                  :aria-pressed="form.willInvest === false"
-                >
-                  Ainda não
-                </button>
-              </div>
-            </div>
-
-            <!-- Submit -->
-            <div class="form__footer">
-              <button type="submit" class="btn btn--primary btn--lg">
-                Quero escalar meu delivery
-                <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                  <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-              </button>
-              <div class="form__trust">
-                <span>Vagas limitadas por mês</span>
-                <span class="form__trust-dot" aria-hidden="true">·</span>
-                <span>Retorno em até 24h</span>
-                <span class="form__trust-dot" aria-hidden="true">·</span>
-                <span>Dados seguros</span>
-              </div>
-            </div>
-
-          </form>
-
-          <!-- Estado de sucesso -->
-          <div v-else class="form-success fade-in">
-            <div class="form-success__icon" aria-hidden="true">
-              <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-                <path d="M6 16l7 7 13-13" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <h3 class="form-success__title">Recebemos seus dados.</h3>
-            <p class="form-success__text">
-              Obrigado, <strong>{{ form.name }}</strong>. Analisamos o perfil do
-              <strong>{{ form.deliveryName }}</strong> e retornamos via WhatsApp
-              <strong>{{ form.whatsapp }}</strong> em até 24 horas.
-            </p>
-            <button @click="resetForm" class="btn btn--ghost btn--sm">
-              Preencher novamente
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </section>
+-->
+    <!-- Form section moved to Hero -->
 
     <!-- ============================================================
          DOR — IDENTIFICAÇÃO
@@ -310,7 +309,7 @@
               <span class="metric__label">ROAS médio</span>
             </div>
             <div class="metric">
-              <strong class="metric__num">+50</strong>
+              <strong class="metric__num">+105</strong>
               <span class="metric__label">Deliverys escalados</span>
             </div>
           </div>
@@ -337,10 +336,7 @@
                 <span class="terminal__key">Pedidos recorrentes</span>
                 <span class="terminal__val">42%</span>
               </li>
-              <li class="terminal__row">
-                <span class="terminal__key">CAC</span>
-                <span class="terminal__val terminal__val--red">R$ 8,12</span>
-              </li>
+            
               <li class="terminal__row terminal__row--last">
                 <span class="terminal__key">ROAS</span>
                 <span class="terminal__val terminal__val--up">4.4×</span>
@@ -355,7 +351,7 @@
     <!-- ============================================================
          SKALE VS AGÊNCIA COMUM
     ============================================================ -->
-    <section class="section split-section" aria-labelledby="split-title-2">
+    <section class="section split-section split-section--bg-skale" aria-labelledby="split-title-2">
       <div class="container split__inner split__inner--reverse">
 
         <div class="split__visual">
@@ -391,7 +387,7 @@
             A gente não é freelancer que entrega post bonito e desaparece. A Skale é especializada só em delivery — com squad dedicado e relatório de resultado toda semana.
           </p>
           <p class="split__text">
-            Investimento, pedidos, ticket médio, ROAS e recorrência — tudo na mesa. Você nunca fica no escuro sobre pra onde tá indo o seu dinheiro.
+            Investimento, pedidos, ticket médio, ROAS e recorrência tudo na mesa. Você nunca fica no escuro sobre pra onde tá indo o seu dinheiro.
           </p>
         </div>
 
@@ -479,6 +475,25 @@
 
       </div>
     </section>
+     <!-- ============================================================
+         CLIENTES
+    ============================================================ -->
+    <section class="section clients-section" aria-labelledby="clients-title">
+      <div class="container">
+
+        <div class="section-header">
+          <span class="eyebrow">Clientes</span>
+          <h2 id="clients-title" class="section-title">Alguns dos restaurantes que já escalaram com a gente:</h2>
+        </div>
+        
+        <div class="clients-img">
+          <img src="/images/logosclientes.png" alt="">
+        </div>
+        
+
+      </div>
+    </section>
+
 
     <!-- ============================================================
          CASES
@@ -647,12 +662,32 @@ const handleScroll = () => {
   lastScrollY = currentScrollY
 }
 
+const isRevenueDropdownOpen = ref(false)
+
+const toggleRevenueDropdown = () => {
+  isRevenueDropdownOpen.value = !isRevenueDropdownOpen.value
+}
+
+const selectRevenue = (value) => {
+  form.value.revenue = value
+  isRevenueDropdownOpen.value = false
+}
+
+const closeDropdownOutside = (e) => {
+  const dropdown = document.querySelector('.custom-dropdown')
+  if (dropdown && !dropdown.contains(e.target)) {
+    isRevenueDropdownOpen.value = false
+  }
+}
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
+  document.addEventListener('click', closeDropdownOutside)
 })
 
 onUnmounted(() => {
   window.removeEventListener('scroll', handleScroll)
+  document.removeEventListener('click', closeDropdownOutside)
 })
 
 const revenueOptions = [
@@ -950,6 +985,20 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 2;
 }
 
+.hero__inner {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .hero__inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
 .hero__eyebrow {
   margin-bottom: 0.4rem;
 }
@@ -1223,16 +1272,20 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .form-section__header {
+  text-align: center;
+  margin: 0 auto;
   max-width: 580px;
   margin-bottom: 3.5rem;
 }
 
 .form-section__header .section-title {
+  margin: 0 auto;
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
 }
 
 .form-wrap {
+  margin: 0 auto;
   max-width: 700px;
   background: rgba(22, 22, 22, 0.25);
   backdrop-filter: blur(20px);
@@ -1545,6 +1598,29 @@ h1, h2, h3, h4, h5, h6 {
   gap: 1.25rem;
 }
 
+.split-section--bg-skale {
+  background-image: url('/images/bg_skale.png');
+  background-size: cover; 
+  background-position: center 10%;  
+  position: relative;
+}
+
+.split-section--bg-skale::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(11, 11, 11, 0.45);
+  pointer-events: none;
+}
+
+.split-section--bg-skale .container {
+  position: relative;
+  z-index: 1;
+}
+
 .split__copy .eyebrow {
   margin-bottom: 0.25rem;
 }
@@ -1552,6 +1628,21 @@ h1, h2, h3, h4, h5, h6 {
 .split__copy .section-title {
   margin: 0;
 }
+
+.clients-section{
+  width: 100%;
+  margin: 0 auto;
+  background-color: #FFF1F3;
+}
+.clients-section img{
+  margin: 0 auto;
+  padding: 1rem;
+} 
+
+.clients-section .section-title {
+  color: #0B0B0B;
+}
+
 
 .split__text {
   font-size: 1rem;
@@ -1939,6 +2030,68 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* =================================================================
+   CUSTOM DROPDOWN
+================================================================= */
+.custom-dropdown {
+  position: relative;
+  width: 100%;
+}
+
+.custom-dropdown__trigger {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  user-select: none;
+}
+
+.custom-dropdown__icon {
+  transition: transform var(--ease-fast);
+  color: var(--grey);
+}
+
+.custom-dropdown--open .custom-dropdown__icon {
+  transform: rotate(180deg);
+}
+
+.custom-dropdown__menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background: rgba(18, 18, 18, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 0.5rem;
+  list-style: none;
+  z-index: 10;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  animation: fadeUp 0.2s var(--ease-fast) both;
+}
+
+.custom-dropdown__item {
+  padding: 0.875rem 1.25rem;
+  border-radius: 8px;
+  font-size: 0.9375rem;
+  color: var(--grey);
+  cursor: pointer;
+  transition: all var(--ease-fast);
+}
+
+.custom-dropdown__item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--white);
+}
+
+.custom-dropdown__item--selected {
+  background: rgba(225, 22, 56, 0.1);
+  color: var(--red);
+  font-weight: 600;
+}
+
+/* =================================================================
    ANIMAÇÕES
 ================================================================= */
 .fade-in {
@@ -1980,6 +2133,17 @@ h1, h2, h3, h4, h5, h6 {
   :root {
     --section-gap: 4.5rem;
   }
+
+  .clients-img {
+    margin-left: -2rem;
+    margin-right: -2rem;
+  }
+
+  .clients-section img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  } 
 
   .hero__stats {
     gap: 1.5rem;

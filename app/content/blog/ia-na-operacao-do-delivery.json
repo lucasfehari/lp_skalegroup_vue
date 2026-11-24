@@ -1,0 +1,34 @@
+{
+  "slug": "ia-na-operacao-do-delivery",
+  "title": "Onde a IA realmente ajuda a operação de um delivery",
+  "excerpt": "Relatórios, campanhas e reativação podem rodar por trás da operação sem transformar o dono do restaurante em especialista em ferramenta.",
+  "category": "IA e automação",
+  "publishedAt": "2026-10-29",
+  "readingMinutes": 4,
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "A melhor automação é a que economiza tempo e melhora uma decisão. No delivery, isso significa organizar dados de pedidos, encontrar oportunidades e executar tarefas repetitivas com uma regra clara."
+    },
+    {
+      "type": "heading",
+      "text": "Três usos práticos"
+    },
+    {
+      "type": "list",
+      "items": [
+        "Consolidar automaticamente dados de mídia, CRM e vendas em um relatório semanal.",
+        "Sugerir segmentos e mensagens para clientes que estão perto do momento de recompra.",
+        "Sinalizar campanhas, ofertas ou regiões que perderam eficiência."
+      ]
+    },
+    {
+      "type": "paragraph",
+      "text": "A IA não substitui a estratégia nem conhece sozinha as restrições da cozinha, da entrega e da margem. Ela acelera a leitura e a execução. O processo continua precisando de metas, critérios e acompanhamento humano."
+    },
+    {
+      "type": "quote",
+      "text": "Tecnologia sem burocracia é aquela que trabalha nos bastidores e entrega uma decisão mais simples na ponta."
+    }
+  ]
+}

@@ -1,21 +1,7 @@
 <template>
   <div class="lp">
 
-    <!-- ============================================================
-         HEADER
-    ============================================================ -->
-    <header class="header" :class="{ 'header--hidden': !isHeaderVisible }">
-      <div class="container header__inner">
-        <a href="#" class="header__logo" aria-label="Skale Digital">
-          <img src="/logo_skale.svg" alt="Skale Digital" />
-        </a>
-        <nav class="header__nav" aria-label="Menu principal">
-          <a href="#form-section" class="btn btn-icon">
-            <img src="/rivet-icons_arrow-up.svg" class="rivet-icons_arrow-up" srcset="">
-          </a>
-        </nav>
-      </div>
-    </header>
+    <SiteHeader />
 
     <!-- ============================================================
          HERO
@@ -33,13 +19,13 @@
           </div>
 
           <h1 id="hero-title" class="hero__title">
-            Pare de torcer<br>
-            pra ser um mês bom.
+            Mais pedidos no seu delivery,<br>
+            com um sistema que funciona sozinho.
           </h1>
 
           <p class="hero__sub">
-            Tenha um delivery que vende com previsibilidade porque tudo é medido,
-            rastreado e otimizado semana a semana.
+            A Skale conecta tráfego, CRM, tecnologia e IA para fazer seu delivery vender
+            mais — sem você precisar aprender ferramenta nenhuma.
           </p>
         </div>
 
@@ -159,7 +145,7 @@
                   </svg>
                 </button>
                 <div class="form__trust">
-                  <span>Vagas limitadas por mês</span>
+                  <span>Diagnóstico sem compromisso</span>
                   <span class="form__trust-dot" aria-hidden="true">·</span>
                   <span>Retorno em até 24h</span>
                   <span class="form__trust-dot" aria-hidden="true">·</span>
@@ -192,6 +178,74 @@
 
       <!-- linha decorativa horizontal -->
       <div class="hero__rule" aria-hidden="true"></div>
+    </section>
+
+    <!-- ============================================================
+         CLIENTES — PROVA SOCIAL LOGO APÓS O HERO
+    ============================================================ -->
+    <section class="client-wall" aria-labelledby="client-wall-title">
+      <div class="container client-wall__inner">
+        <div class="client-wall__heading">
+          <div>
+            <span class="eyebrow">Clientes</span>
+            <h2 id="client-wall-title">Marcas que já colocaram o Sistema Skale para rodar.</h2>
+          </div>
+          <span class="client-wall__count">{{ clientLogos.length }} marcas</span>
+        </div>
+        <ul class="client-wall__grid" aria-label="Clientes da Skale Digital">
+          <li v-for="client in clientLogos" :key="client.name" class="client-logo">
+            <img :src="client.src" :alt="client.name" loading="lazy" />
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SISTEMA SKALE — NOVA SEGUNDA DOBRA COMPLETA
+    ============================================================ -->
+    <section id="sistema-skale" class="section system-section" aria-labelledby="system-title">
+      <div class="container">
+        <div class="system-section__header">
+          <div>
+            <span class="eyebrow eyebrow--light">O que a Skale faz</span>
+            <h2 id="system-title" class="section-title">Crescimento não é uma campanha.<br>É um sistema.</h2>
+          </div>
+          <p>
+            A estratégia, a tecnologia e a rotina de análise trabalham juntas. Você
+            acompanha pedidos e faturamento; a complexidade fica com a gente.
+          </p>
+        </div>
+
+        <div class="system-grid">
+          <article class="system-card">
+            <span class="system-card__num">01</span>
+            <h3>Mais vendas</h3>
+            <p>Tráfego pago, CRM e reativação para conquistar clientes e fazê-los comprar de novo.</p>
+          </article>
+          <article class="system-card system-card--bright">
+            <span class="system-card__num">02</span>
+            <h3>Tecnologia sem burocracia</h3>
+            <p>IA e automações cuidam de relatórios, campanhas e oportunidades nos bastidores.</p>
+          </article>
+          <article class="system-card">
+            <span class="system-card__num">03</span>
+            <h3>Rotina que funciona</h3>
+            <p>Leitura, decisão e ajuste toda semana. Um processo constante, não ações soltas.</p>
+          </article>
+        </div>
+
+        <div class="system-method" aria-label="Etapas do Sistema Skale">
+          <span>Diagnóstico</span>
+          <i aria-hidden="true">→</i>
+          <span>Aquisição</span>
+          <i aria-hidden="true">→</i>
+          <span>Conversão</span>
+          <i aria-hidden="true">→</i>
+          <span>Recompra</span>
+          <i aria-hidden="true">→</i>
+          <span>Escala</span>
+        </div>
+      </div>
     </section>
 
     <!-- ============================================================
@@ -291,26 +345,28 @@
       <div class="container split__inner">
 
         <div class="split__copy">
-          <span class="eyebrow">A diferença está no dado</span>
-          <h2 id="split-title-1" class="section-title">No delivery,<br>a gente não chuta.<br>A gente mede.</h2>
+          <span class="eyebrow">Venda mais. Entenda por quê.</span>
+          <h2 id="split-title-1" class="section-title">Cada pedido deixa o sistema mais inteligente.</h2>
           <p class="split__text">
-            Diferente de marketing genérico, no delivery cada pedido deixa rastro: quem comprou, quanto gastou, quando volta. Nós usamos esse dado pra fazer marketing que se paga e escala.
+            O resultado vem primeiro. Os dados mostram o caminho: quem comprou, quanto gastou,
+            qual campanha trouxe o pedido e quando esse cliente pode voltar.
           </p>
           <p class="split__text">
-            Trabalhamos recorrência, montamos CRM e acompanhamos cada real investido. Você não aposta. Você acompanha o resultado acontecendo.
+            Com isso, mídia e CRM deixam de ser ações isoladas e passam a operar como um sistema
+            que aprende e melhora toda semana.
           </p>
           <div class="split__metrics">
             <div class="metric">
-              <strong class="metric__num">100%</strong>
-              <span class="metric__label">Mapeado</span>
+              <strong class="metric__num">Semanal</strong>
+              <span class="metric__label">Leitura + ajuste</span>
             </div>
             <div class="metric">
-              <strong class="metric__num">3.5×</strong>
-              <span class="metric__label">ROAS médio</span>
+              <strong class="metric__num">CRM + mídia</strong>
+              <span class="metric__label">Na mesma estratégia</span>
             </div>
             <div class="metric">
-              <strong class="metric__num">+105</strong>
-              <span class="metric__label">Deliverys escalados</span>
+              <strong class="metric__num">1 sistema</strong>
+              <span class="metric__label">Do clique à recompra</span>
             </div>
           </div>
         </div>
@@ -468,37 +524,17 @@
                 <circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/>
               </svg>
             </div>
-            <h3 class="deliver-card__title">Crescimento que escala</h3>
-            <p class="deliver-card__text">Quanto mais dados acumulamos, mais assertiva a alocação de verba. O sistema fica mais inteligente.</p>
+            <h3 class="deliver-card__title">IA e automações</h3>
+            <p class="deliver-card__text">Relatórios, campanhas e reativação rodam por trás da operação. Você recebe decisões claras, não mais uma ferramenta.</p>
           </article>
         </div>
 
       </div>
     </section>
-     <!-- ============================================================
-         CLIENTES
-    ============================================================ -->
-    <section class="section clients-section" aria-labelledby="clients-title">
-      <div class="container">
-
-        <div class="section-header">
-          <span class="eyebrow">Clientes</span>
-          <h2 id="clients-title" class="section-title">Alguns dos restaurantes que já escalaram com a gente:</h2>
-        </div>
-        
-        <div class="clients-img">
-          <img src="/images/logosclientes.png" alt="">
-        </div>
-        
-
-      </div>
-    </section>
-
-
     <!-- ============================================================
          CASES
     ============================================================ -->
-    <section class="section cases-section" aria-labelledby="cases-title">
+    <section id="cases" class="section cases-section" aria-labelledby="cases-title">
       <div class="container">
 
         <div class="section-header">
@@ -582,7 +618,7 @@
         <div class="section-header">
           <span class="eyebrow">Processo</span>
           <h2 id="steps-title" class="section-title">Simples de começar.</h2>
-          <p class="section-desc">Três etapas para rodar sua máquina de vendas com dados.</p>
+          <p class="section-desc">Três etapas para colocar marketing, CRM e automação para trabalhar juntos.</p>
         </div>
 
         <div class="steps">
@@ -601,7 +637,7 @@
           <div class="step">
             <span class="step__num">03</span>
             <h3 class="step__title">Venda com previsibilidade</h3>
-            <p class="step__text">Estruturamos CRM, campanhas e relatórios. Você gerencia a cozinha.</p>
+            <p class="step__text">Estruturamos campanhas, CRM e automações. Você cuida da operação.</p>
           </div>
         </div>
 
@@ -609,38 +645,44 @@
     </section>
 
     <!-- ============================================================
-         CTA FINAL
+         BLOG — CONTEÚDO DESACOPLADO DO LAYOUT
     ============================================================ -->
-    <section class="section cta-section" aria-labelledby="cta-title">
+    <section class="section home-blog" aria-labelledby="home-blog-title">
       <div class="container">
-        <div class="cta-block">
-          <span class="eyebrow">Vagas limitadas</span>
-          <h2 id="cta-title" class="cta-block__title">A gente não pega delivery demais ao mesmo tempo.</h2>
-          <p class="cta-block__text">
-            Para entregar resultado de verdade, trabalhamos com um número limitado de deliverys por mês.
-            Se o seu já fatura acima de 50 mil e está pronto pra escalar — garanta sua vaga agora.
-          </p>
-          <a href="#form-section" class="btn btn--primary btn--lg" @click.prevent="scrollToForm">
-            Garantir minha vaga deste mês
-            <svg class="btn__arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
+        <div class="home-blog__header">
+          <div>
+            <span class="eyebrow">Conteúdo Skale</span>
+            <h2 id="home-blog-title" class="section-title">Estratégia pra usar na operação.</h2>
+          </div>
+          <NuxtLink to="/blog" class="home-blog__all">Ver todos os artigos ↗</NuxtLink>
+        </div>
+
+        <div class="home-blog__grid">
+          <BlogCard v-for="post in latestPosts" :key="post.slug" :post="post" />
         </div>
       </div>
     </section>
 
     <!-- ============================================================
-         FOOTER
+         PARCEIROS — CREDENCIAL NO LUGAR DA ESCASSEZ
     ============================================================ -->
-    <footer class="footer">
-      <div class="container footer__inner">
-        <a href="#" class="footer__logo" aria-label="Skale Digital">
-          <img src="/logo_skale.svg" alt="Skale Digital" />
-        </a>
-        <p class="footer__copy">&copy; 2026 Skale Digital assessoria de marketing Ltda. Todos os direitos reservados.</p>
+    <section class="section partners-section" aria-labelledby="partners-title">
+      <div class="container partners-section__inner">
+        <div class="partners-section__copy">
+          <span class="eyebrow eyebrow--light">Ecossistema</span>
+          <h2 id="partners-title" class="section-title">Parceiros de quem move o delivery no Brasil.</h2>
+          <p>Integrações e relações que aproximam estratégia, dados e operação.</p>
+        </div>
+
+        <ul class="partner-list" aria-label="Parceiros Skale">
+          <li v-for="partner in partnerLogos" :key="partner.name" class="partner-card">
+            <img :src="partner.src" :alt="partner.name" loading="lazy" />
+          </li>
+        </ul>
       </div>
-    </footer>
+    </section>
+
+    <SiteFooter />
 
   </div>
 </template>
@@ -648,19 +690,28 @@
 <script setup>
 import { ref, onMounted, onUnmounted } from 'vue'
 
-const isHeaderVisible = ref(true)
-let lastScrollY = 0
+const { posts } = useBlog()
+const latestPosts = computed(() => posts.value.slice(0, 3))
 
-const handleScroll = () => {
-  const currentScrollY = window.scrollY
-  // Hide header when scrolling down and past 80px, show when scrolling up
-  if (currentScrollY > lastScrollY && currentScrollY > 80) {
-    isHeaderVisible.value = false
-  } else {
-    isHeaderVisible.value = true
-  }
-  lastScrollY = currentScrollY
-}
+const clientLogos = [
+  { name: 'Ponto Zero Sete', src: '/images/clients/ponto-zero-sete.jpg' },
+  { name: 'Dogão Hot Dog', src: '/images/clients/docao.jpg' },
+  { name: 'Poki', src: '/images/clients/poki-horizontal-preto.svg' },
+  { name: 'Alpha Burgers', src: '/images/clients/alpha-burgers.png' },
+  { name: 'Thay Poke', src: '/images/clients/thay-poke.jpg' },
+  { name: 'Yashi', src: '/images/clients/yashi-4k.jpg' },
+  { name: 'Território Neutro', src: '/images/clients/territorio-neutro.jpg' },
+  { name: 'Poke House', src: '/images/clients/poke-house.jpg' },
+  { name: 'Primos Xis', src: '/images/clients/primos-xis.jpg' },
+  { name: 'Jaspion Sushi', src: '/images/clients/jaspion-sushi.jpg' },
+]
+
+const partnerLogos = [
+  { name: 'iFood', src: '/images/partners/ifood.svg' },
+  { name: '99Food', src: '/images/partners/99food.svg' },
+  { name: 'Takeat', src: '/images/partners/takeat.svg' },
+  { name: 'Cardápio Web', src: '/images/partners/cardapio-web.png' },
+]
 
 const isRevenueDropdownOpen = ref(false)
 
@@ -681,12 +732,10 @@ const closeDropdownOutside = (e) => {
 }
 
 onMounted(() => {
-  window.addEventListener('scroll', handleScroll)
   document.addEventListener('click', closeDropdownOutside)
 })
 
 onUnmounted(() => {
-  window.removeEventListener('scroll', handleScroll)
   document.removeEventListener('click', closeDropdownOutside)
 })
 
@@ -699,6 +748,7 @@ const revenueOptions = [
 
 const form = ref({
   name:         '',
+  email:        '',
   revenue:      '50k a 100k',
   whatsapp:     '',
   willInvest:   true,
@@ -713,7 +763,7 @@ const submitForm = () => {
 }
 
 const resetForm = () => {
-  form.value = { name: '', revenue: '50k a 100k', whatsapp: '', willInvest: true, deliveryName: '' }
+  form.value = { name: '', email: '', revenue: '50k a 100k', whatsapp: '', willInvest: true, deliveryName: '' }
   submitted.value = false
 }
 
@@ -935,8 +985,8 @@ h1, h2, h3, h4, h5, h6 {
    HERO
 ================================================================= */
 .hero {
-  padding-top: calc(var(--section-gap) + 64px);
-  padding-bottom: 5rem;
+  padding-top: 8rem;
+  padding-bottom: 2.75rem;
   position: relative;
   overflow: hidden;
 }
@@ -1007,7 +1057,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .hero__title {
-  font-size: clamp(3rem, 7vw, 6rem);
+  max-width: 720px;
+  font-size: clamp(3rem, 4.5vw, 4.5rem);
   line-height: 0.97;
   letter-spacing: -0.04em;
   font-weight: 700;
@@ -1082,6 +1133,213 @@ h1, h2, h3, h4, h5, h6 {
   right: 0;
   height: 1px;
   background: var(--border);
+}
+
+/* =================================================================
+   CLIENTES — PROVA SOCIAL COMPACTA
+================================================================= */
+.client-wall {
+  position: relative;
+  padding: 3.25rem 0;
+  overflow: hidden;
+  background: var(--red-mist);
+  color: var(--bg);
+}
+
+.client-wall::before {
+  position: absolute;
+  top: -160px;
+  right: -120px;
+  width: 420px;
+  height: 420px;
+  border: 48px solid rgba(225, 22, 56, 0.08);
+  border-radius: 50%;
+  content: '';
+}
+
+.client-wall__inner {
+  position: relative;
+  z-index: 1;
+}
+
+.client-wall__heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.client-wall__heading h2 {
+  max-width: 720px;
+  margin: 0.7rem 0 0;
+  color: var(--bg);
+  font-family: var(--font-display);
+  font-size: clamp(1.8rem, 3vw, 2.65rem);
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+}
+
+.client-wall__count {
+  flex: 0 0 auto;
+  color: var(--red-dim);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.client-wall__grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  overflow: hidden;
+  border: 1px solid rgba(11, 11, 11, 0.13);
+  border-radius: 24px;
+  background: rgba(11, 11, 11, 0.13);
+  gap: 1px;
+  list-style: none;
+}
+
+.client-logo {
+  display: flex;
+  min-width: 0;
+  aspect-ratio: 1;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--white);
+}
+
+.client-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform var(--ease-smooth), filter var(--ease-smooth);
+}
+
+.client-logo:hover img {
+  transform: scale(1.035);
+}
+
+/* =================================================================
+   SISTEMA SKALE
+================================================================= */
+.system-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 78% 22%, rgba(255, 49, 84, 0.45), transparent 23%),
+    linear-gradient(145deg, var(--red-deep), #17070b 64%, #0c0c0c);
+}
+
+.system-section::after {
+  position: absolute;
+  right: -18rem;
+  bottom: -30rem;
+  width: 58rem;
+  height: 58rem;
+  border: 68px solid rgba(255, 241, 243, 0.06);
+  border-radius: 50%;
+  content: '';
+}
+
+.system-section .container {
+  position: relative;
+  z-index: 1;
+}
+
+.system-section__header {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 5rem;
+  align-items: end;
+  margin-bottom: 3rem;
+}
+
+.system-section__header .section-title {
+  max-width: 760px;
+  margin-bottom: 0;
+}
+
+.system-section__header > p {
+  margin: 0;
+  color: rgba(255, 241, 243, 0.7);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.eyebrow--light {
+  color: var(--red-soft);
+}
+
+.system-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.system-card {
+  min-height: 280px;
+  padding: 2rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(11, 11, 11, 0.28);
+  backdrop-filter: blur(12px);
+}
+
+.system-card:last-child {
+  border-right: 0;
+}
+
+.system-card--bright {
+  background: rgba(225, 22, 56, 0.28);
+}
+
+.system-card__num {
+  display: block;
+  margin-bottom: 4rem;
+  color: var(--red-soft);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+}
+
+.system-card h3 {
+  margin-bottom: 0.7rem;
+  font-size: 1.35rem;
+}
+
+.system-card p {
+  margin: 0;
+  color: rgba(255, 241, 243, 0.7);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.system-method {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.25rem;
+  padding: 1.15rem 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.82);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.system-method i {
+  color: var(--red-bright);
+  font-style: normal;
 }
 
 /* =================================================================
@@ -1292,7 +1550,7 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 32px;
-  padding: 3rem 2.5rem;
+  padding: 2rem;
   box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4),
               inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
@@ -1300,13 +1558,13 @@ h1, h2, h3, h4, h5, h6 {
 .form {
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 1.15rem;
 }
 
 .form__row {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.75rem;
 }
 
 .form__field {
@@ -1321,14 +1579,14 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--grey);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin-left: 1.25rem;
+  margin-left: 1rem;
 }
 
 .form__hint {
   font-size: 0.8125rem;
   color: var(--grey-dark);
   margin-top: -0.25rem;
-  margin-left: 1.25rem;
+  margin-left: 1rem;
 }
 
 .form__input {
@@ -1336,7 +1594,7 @@ h1, h2, h3, h4, h5, h6 {
   background: rgba(11, 11, 11, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 100px;
-  padding: 1rem 1.75rem;
+  padding: 0.8rem 1.25rem;
   color: var(--white);
   font-family: var(--font-body);
   font-size: 0.9375rem;
@@ -1411,7 +1669,7 @@ h1, h2, h3, h4, h5, h6 {
 .toggle-btn {
   flex: 1;
   max-width: 180px;
-  padding: 0.875rem 1.5rem;
+  padding: 0.72rem 1.2rem;
   border-radius: 100px;
   font-family: var(--font-display);
   font-size: 0.9375rem;
@@ -1673,6 +1931,10 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
 
+.metric:nth-child(n + 2) .metric__num {
+  font-size: 1.35rem;
+}
+
 .metric__label {
   font-size: 0.8125rem;
   color: var(--grey-dark);
@@ -1912,6 +2174,29 @@ h1, h2, h3, h4, h5, h6 {
 ================================================================= */
 .steps-section {
   border-top: 1px solid var(--border);
+  background:
+    radial-gradient(circle at 88% 18%, rgba(225, 22, 56, 0.16), transparent 23%),
+    var(--red-mist);
+  color: var(--bg);
+}
+
+.steps-section .section-title,
+.steps-section .step__title {
+  color: var(--bg);
+}
+
+.steps-section .section-desc,
+.steps-section .step__text {
+  color: #6a555a;
+}
+
+.steps-section .steps::before {
+  background: rgba(81, 9, 23, 0.18);
+}
+
+.steps-section .step__num {
+  border-color: rgba(81, 9, 23, 0.18);
+  background: var(--off-white);
 }
 
 .steps {
@@ -1995,6 +2280,105 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--grey);
   line-height: 1.65;
   max-width: 560px;
+}
+
+/* =================================================================
+   BLOG NA HOME
+================================================================= */
+.home-blog {
+  border-top: 1px solid var(--border);
+  background: #0e0e0e;
+}
+
+.home-blog__header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.home-blog__header .section-title {
+  margin-bottom: 0;
+}
+
+.home-blog__all {
+  color: var(--red-bright);
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.home-blog__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+/* =================================================================
+   PARCEIROS
+================================================================= */
+.partners-section {
+  position: relative;
+  overflow: hidden;
+  background: var(--red);
+}
+
+.partners-section::after {
+  position: absolute;
+  right: -12rem;
+  bottom: -19rem;
+  width: 38rem;
+  height: 38rem;
+  border: 54px solid rgba(255, 255, 255, 0.08);
+  border-radius: 50%;
+  content: '';
+}
+
+.partners-section__inner {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr);
+  gap: 5rem;
+  align-items: center;
+}
+
+.partners-section__copy .section-title {
+  margin-bottom: 1rem;
+  color: var(--white);
+}
+
+.partners-section__copy > p {
+  max-width: 520px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.65;
+}
+
+.partner-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
+  list-style: none;
+}
+
+.partner-card {
+  display: flex;
+  min-height: 148px;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.18);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  background: var(--red-mist);
+}
+
+.partner-card img {
+  width: 100%;
+  max-width: 190px;
+  height: 64px;
+  object-fit: contain;
 }
 
 /* =================================================================
@@ -2107,6 +2491,38 @@ h1, h2, h3, h4, h5, h6 {
    RESPONSIVO
 ================================================================= */
 @media (max-width: 1024px) {
+  .system-section__header,
+  .partners-section__inner {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .client-wall__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .system-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .system-card {
+    min-height: auto;
+    border-right: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .system-card:last-child {
+    border-bottom: 0;
+  }
+
+  .system-card__num {
+    margin-bottom: 2rem;
+  }
+
+  .home-blog__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .split__inner {
     grid-template-columns: 1fr;
     gap: 3rem;
@@ -2134,16 +2550,47 @@ h1, h2, h3, h4, h5, h6 {
     --section-gap: 4.5rem;
   }
 
-  .clients-img {
-    margin-left: -2rem;
-    margin-right: -2rem;
+  .client-wall__inner {
+    gap: 1.5rem;
   }
 
-  .clients-section img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-  } 
+  .client-wall__heading {
+    align-items: flex-start;
+    flex-direction: column;
+    margin-bottom: 1.75rem;
+  }
+
+  .client-wall__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .system-method {
+    align-items: stretch;
+    flex-direction: column;
+    border-radius: 18px;
+    text-align: center;
+  }
+
+  .system-method i {
+    transform: rotate(90deg);
+  }
+
+  .home-blog__header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .home-blog__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .partner-list {
+    grid-template-columns: 1fr;
+  }
+
+  .partner-card {
+    min-height: 124px;
+  }
 
   .hero__stats {
     gap: 1.5rem;

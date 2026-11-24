@@ -9,14 +9,14 @@ export default defineNuxtConfig({
   // App head settings
   app: {
     head: {
-      title: 'Skale Digital | Assessoria de Marketing Especializada em Delivery',
+      title: 'Skale Digital | Mais pedidos para o seu delivery',
       htmlAttrs: {
         lang: 'pt-BR'
       },
       meta: [
         { charset: 'utf-8' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-        { name: 'description', content: 'Tenha um delivery que vende com previsibilidade, porque tudo é medido. Menos dependência do iFood e mais recorrência para o seu negócio.' },
+        { name: 'description', content: 'Marketing, CRM, tecnologia e IA para seu delivery vender mais, com um sistema que funciona sem burocracia.' },
         { name: 'format-detection', content: 'telephone=no' }
       ],
       link: [

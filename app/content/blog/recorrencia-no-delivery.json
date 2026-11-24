@@ -1,0 +1,46 @@
+{
+  "slug": "recorrencia-no-delivery",
+  "title": "Recorrência no delivery: como vender de novo para quem já comprou",
+  "excerpt": "Um processo simples para transformar a base de clientes em um canal previsível de vendas, sem depender de desconto toda semana.",
+  "category": "CRM e recorrência",
+  "publishedAt": "2026-11-12",
+  "readingMinutes": 6,
+  "featured": true,
+  "seoTitle": "Recorrência no delivery: guia prático | Skale Digital",
+  "seoDescription": "Aprenda a estruturar CRM, segmentação e campanhas de recompra para aumentar a recorrência no seu delivery.",
+  "content": [
+    {
+      "type": "paragraph",
+      "text": "Conquistar um cliente novo costuma exigir anúncio, oferta e tempo. Fazer alguém que já conhece o seu produto comprar outra vez começa com uma vantagem: a confiança já existe. O desafio é organizar os dados e criar um motivo relevante para a próxima compra."
+    },
+    {
+      "type": "heading",
+      "text": "Comece pela frequência real de compra"
+    },
+    {
+      "type": "paragraph",
+      "text": "Antes de disparar qualquer campanha, descubra quanto tempo os seus melhores clientes levam para voltar. Uma hamburgueria, uma pizzaria e um restaurante de almoço têm ritmos diferentes. A régua de comunicação precisa acompanhar esse comportamento."
+    },
+    {
+      "type": "list",
+      "items": [
+        "Separe clientes novos, recorrentes e inativos.",
+        "Identifique o intervalo médio entre os pedidos.",
+        "Crie mensagens diferentes para cada momento da jornada.",
+        "Meça pedidos e receita, não apenas cliques ou respostas."
+      ]
+    },
+    {
+      "type": "heading",
+      "text": "Automação não significa mensagem genérica"
+    },
+    {
+      "type": "paragraph",
+      "text": "A tecnologia deve reduzir o trabalho operacional e aumentar a relevância. Uma boa automação usa histórico de compra, horário e preferência para escolher a mensagem certa. O dono do delivery não precisa operar a ferramenta: precisa acompanhar o resultado."
+    },
+    {
+      "type": "quote",
+      "text": "Recorrência deixa de ser sorte quando cada cliente entra em uma jornada clara de recompra."
+    }
+  ]
+}
